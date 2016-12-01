@@ -1,0 +1,87 @@
+<h1 align="center">Rate Card</h1>
+<style type="text/css">
+#left {
+	float: left;
+	width: 100%;
+	height: 25em;
+	margin: 20px .2em 3px 3px;
+	font-family: "SIMPSON";
+}
+
+#content {
+	margin: 5px .10em 5px 45%;
+}
+
+#cnt2 {position;relative;
+	margin: 1em 10px;
+	height: 45em;
+	width: 100%;
+	
+	font-family: "SIMPSON";
+}
+
+#cnt3 {position;relative;
+	margin: 1em 10px;
+	height: 15em;
+}
+</style>
+<style type="text/css">
+.modal {
+	
+}
+
+.vertical-alignment-helper {
+	width: 200px;
+	height: 150px;
+	position: absolute;
+	left: 5%;
+	top: 15%;
+	margin-left: -60px;
+	margin-top: -100px;
+}
+
+.vertical-align-center {
+	/* To center vertically */
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.modal-content {
+	/* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+	width: 100%;
+	height: 50%;
+	/* To center horizontally */
+	margin: 5 auto;
+}
+</style>
+
+	<div class="signin">
+				<!-- <table
+					class="table table-striped table-hover table-condensed table-fixedheader "> -->
+				<table class="table">
+					<tr>
+						<th style="font-family: Verdana; color: white; font-size: 16px;" id="xyz">Role</th>
+						<td></td>
+						<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Country</b></th>
+						<td></td>
+						<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Rate</b></th>
+						<td></td>
+						<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Action</b></th>
+					</tr>
+					<tr ng-repeat="x in xb">
+						<td style="font-family: Verdana; color: white; font-size: 16px; ng-model="role1" ng-init="role1=x.RoleName">{{x.RoleName}}</td>
+						<td></td>
+						<td style="font-family: Verdana; color: white; font-size: 16px; ng-model="Country" ng-init="Country=x.Country">{{x.RoleName}}</td>
+						<td></td>
+						<td style="font-family: Verdana; color: white; font-size: 16px; ng-model="rate" ng-init="rate=x.Rate">{{x.Rate}}</td>
+						<td></td>
+						<td style="font-family: Verdana; color: white; font-size: 16px; ng-model="rateid" ng-init="rateid=x.rateID" ng-hide="true">{{x.rateID}}</td>	
+                        <td>
+                        <a href="" type="button" ng-click='Navigate()'><span class="glyphicon glyphicon-edit"></span>
+                        </a>&nbsp;&nbsp;&nbsp;
+                        <a type="button"
+                        ng-click="deleteRate(rateid)">
+                        <span class="glyphicon glyphicon-trash"></span></a>
+					</tr>
+				</table> 
+		</div>

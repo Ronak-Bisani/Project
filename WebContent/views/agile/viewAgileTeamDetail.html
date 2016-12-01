@@ -1,0 +1,78 @@
+<html>
+<head>
+
+<meta charset="utf-8">
+
+<link href="css/center.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+	<h1 align="center">Agile Team Setup</h1>
+
+
+	<div class="signin1" ng-controller="viewAgileTeamDetailCtrl">
+		<div style="height: 50px;">
+			<div class="alert alert-danger" ng-hide="bootstrapAlert"
+				align="center">
+				<strong>{{ErrorMessage}}</strong>
+			</div>
+		</div>
+		<form role="form">
+
+
+			<table class="table">
+				<tr>
+					<th style="font-family: Verdana; color: white; font-size: 14px;"><b>AgileName</b></th>
+
+					<th style="font-family: Verdana; color: white; font-size: 16px;"><b>LOB</th>
+					<th style="font-family: Verdana; color: white; font-size: 16px;"><b>SOW
+							NAME</th>
+					<th style="font-family: Verdana; color: white; font-size: 16px;"><b>WOID</th>
+					<th style="font-family: Verdana; color: white; font-size: 16px;"><b>DM
+							NAME</th>
+					<th style="font-family: Verdana; color: white; font-size: 16px;"><b>PGM</th>
+					<th style="font-family: Verdana; color: white; font-size: 16px;"><b>PM
+							Name</th>
+					<th style="font-family: Verdana; color: white; font-size: 16px;"><b>DID</th>
+					<th style="font-family: Verdana; color: white; font-size: 16px;"><b>ART</th>
+					<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Run/Change</th>
+					<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Client
+							Manager Name</th>
+					<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Agile
+							Type</th>
+					<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Delete</th>
+				</tr>
+				<tr ng-repeat="x in agileTDetailsView">
+					<td style="font-family: Verdana; color: white; font-size: 14px;">{{x.AgileName}}</td>
+					<td style="font-family: Verdana; color: white; font-size: 14px;">{{x.LOB}}</td>
+					<td style="font-family: Verdana; color: white; font-size: 14px;">{{x.SowName}}</td>
+					<td style="font-family: Verdana; color: white; font-size: 14px;">{{x.WOID}}</td>
+					<td style="font-family: Verdana; color: white; font-size: 14px;">{{x.DMName}}</td>
+					<td style="font-family: Verdana; color: white; font-size: 14px;">{{x.PGMName}}</td>
+					<td style="font-family: Verdana; color: white; font-size: 14px;">{{x.pmName}}</td>
+					<td style="font-family: Verdana; color: white; font-size: 14px;">{{x.DID}}</td>
+					<td style="font-family: Verdana; color: white; font-size: 14px;">{{x.art}}</td>
+					<td style="font-family: Verdana; color: white; font-size: 14px;">{{x.runChange}}</td>
+					<td style="font-family: Verdana; color: white; font-size: 14px;">{{x.clientMgnrName}}</td>
+					<td style="font-family: Verdana; color: white; font-size: 14px;">{{x.agileType}}</td>
+					<td><a href="" type="button"
+						ng-click="deleteAgileTeams(agileID)"><i style="color: white;"
+							class="fa fa-trash-o fa-lg" aria-hidden="true"></i></a></td>
+					<td ng-hide="true" ng-init="agileID=x.ID">{{x.ID}}</td>
+				</tr>
+			</table>
+
+
+		</form>
+
+
+	</div>
+	<div class="signin">
+		<button class="btnSubmit" ng-disabled="disabled"
+			ng-click='Navigate()'>Create Agile Team</button>
+			<button class="btnSubmit" ng-disabled="disabled"
+			ng-click='Navigate1()'>Edit Agile Team</button>
+	</div>
+</body>
+</html>

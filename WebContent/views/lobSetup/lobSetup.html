@@ -1,0 +1,213 @@
+<html>
+<head>
+
+
+
+<meta charset="utf-8">
+
+<link href="css/center.css" rel="stylesheet" type="text/css">
+
+
+<style type="text/css">
+body {
+	margin-top: 20px;
+	margin-left: 20px;
+}
+
+.ml10 {
+	margin-left: 10px;
+}
+</style>
+
+
+<script>
+	$(function() {
+
+		$('[data-tooltip="true"]').tooltip({
+			container : 'body',
+			placement : 'bottom'
+		});
+
+	});
+	$(document).ready(function() {
+		$('[data-toggle="tooltip"]').tooltip();
+	});
+</script>
+
+</head>
+
+<body>
+	<h1 align="center">LOB Setup</h1>
+	<div class="signin" ng-controller="lobCtrl">
+
+
+		<div style="height: 50px;">
+			<div class="alert alert-danger" ng-hide="bootstrapAlert"
+				align="center">
+				<strong>{{ErrorMessage}}</strong>
+			</div>
+		</div>
+
+			<form>
+
+						<table class="table">
+
+							<tr>
+								<th style="font-family: Verdana; color: white; font-size: 16px;"><b>LOB</b></th>
+								<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Business Segment</b></th>
+								<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Bundle</b></th>
+								<th style="font-family: Verdana; color: white; font-size: 16px;"><b>MSA Domain Mapping</b></th>
+								<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Currency Type</b></th>
+							</tr>
+
+							<tr>
+								<td>
+									<div class="form-group" data-ng-repeat="choice in choices">
+									
+											
+												<input type="text" ng-model="choice.lob" name=""
+													placeholder="LOB" class="user" required
+													ng-change="clrDesc()"><br>
+										
+											<button class="btn btn-primary"
+												ng-show="showAddChoice(choice)" ng-click="addNewChoice()">+
+
+											</button>
+											<button class="btn btn-danger"
+												ng-show="showAddChoice(choice)" ng-click="removeChoice()"
+												data-toggle="popover" data-trigger="hover"
+												data-content="Delete feild" ng-disabled="disable_remove">-</button>
+									
+									</div>
+								</td>
+
+
+
+								<td>
+									<div class="form-group" data-ng-repeat="choice in choices">
+										<select ng-model="choice.bs"
+											class="form1-control1" required
+											ng-change="clrDesc()">
+											<option value="">Please Select Business Segment</option>
+											<option value="COF">COF</option>
+											<option value="COAF">COAF</option>
+											<option value="COHL">COHL</option>
+										</select>
+
+
+									</div>
+
+
+								</td>
+
+								<td>
+									<div class="form-group" data-ng-repeat="choice in choices">
+
+										<input list="bundleNames" ng-model="choice.bundle"
+											class="form1-control1" required
+											ng-change="clrDesc()" placeholder="Please Select Bundle">
+										<datalist id="bundleNames">
+											<option value="IPS" />
+											<option value="RAFT" />
+											<option value="eAPI" />
+											<option value="Branded Book" />
+											<option value="Acquisitions" />
+											<option value="Servicing" />
+											<option value="Engineering" />
+											<option value="Digital" />
+											<option value="Partnership" />
+											<option value="EDS" />
+											<option value="Retail IT" />
+											<option value="Auto" />
+											<option value="WTS" />
+											<option value="RB" />
+											<option value="CB" />
+											<option value="COAF" />
+											<option value="Home Loans" />
+										</datalist>
+
+
+										<!--  -->
+									</div>
+								</td>
+
+								<td>
+									<div class="form-group" data-ng-repeat="choice in choices">
+
+
+										<input list="msaDomainMapping" ng-model="choice.msa"
+											class="form1-control1" required
+											ng-change="clrDesc()" placeholder="Please Select MSA">
+										<datalist id="msaDomainMapping">
+											<option value="Custom Applications" />
+											<option value="Web-related Prog/Analyst Level 2" />
+											<option value="Test Analyst Level 3" />
+											<option value="ETL and Data Services" />
+											<option value="Application Architect Level 1" />
+											<option value="Enterprise Applications" />
+											<option value="Operations Support" />
+											<option value="Qualtiy Services" />
+											<option value="DWH-Developer" />
+											<option value="Web-related Prog/Analyst Level 3" />
+											<option value="Quality Services" />
+											<option value="Sr Engineer ‐ Mainframe" />
+											<option value="Quality or Test Analyst Level 3" />
+											<option value="Lead Engineer" />
+											<option value="Database Administrator Level 2" />
+											<option value="Quality Engineer Level 3" />
+											<option value="ONSITE API SR. DEVELOPER" />
+											<option value="Engineer" />
+											<option value="Sr Engineer - eAPI" />
+											<option value="Lead Engineer - eAPI/UI" />
+											<option value="ECM Developer" />
+											<option value="Sr Architect" />
+											<option value="EDW AND BI" />
+											<option value="Senior Engineer" />
+											<option value="Lead Engineer" />
+											<option value="Custom Systems" />
+											<option value="NA" />
+											<option value="MISC" />
+											<option value="Custom Application" />
+											<option value="Custom application" />
+											<option value="Custom Applications with MEAN Stack" />
+											<option value="Operation Support " />
+											<option value="ETL Specialist Level 3" />
+											<option value="ETL Specialist Level 2" />
+										</datalist>
+
+
+
+
+									</div>
+								</td>
+
+
+
+								<td>
+									<div class="form-group" data-ng-repeat="choice in choices">
+										<select ng-model="choice.type"
+											class="form1-control1" required
+											ng-change="clrDesc()">
+											<option value="">Please Select Currency</option>
+											<option value="USD">USD</option>
+											<option value="INR">INR</option>
+											<option value="GBP">GBP</option>
+										</select>
+									</div>
+								</td>
+
+
+
+							</tr>
+
+						</table>
+
+						<button margin="20px" class="btn btn-primary pull-right"
+							style="padding: 10px 10px;" ng-click='saveLob()'
+							ng-disabled="disabled">SAVE</button>
+						<!-- data-toggle="tooltip" data-placement="top" title="Save!" -->
+
+			</form>
+	</div>
+</body>
+</html>

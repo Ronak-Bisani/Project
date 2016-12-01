@@ -1,0 +1,146 @@
+<h1 align="center">No. of Working Days</h1>
+
+
+
+<!-- <style type="text/css">
+#left {
+	float: left;
+	width: 55%;
+	height: 25em;
+	margin: 3px .2em 3px 3px;
+}
+
+#content {
+	margin: 5px .10em 5px 35%;
+}
+
+#cnt2 {position;relative;
+	margin: 1em 10px;
+	height: 15em;
+}
+
+#cnt3 {position;relative;
+	margin: 1em 10px;
+	height: 15em;
+}
+</style> -->
+
+
+
+<div class="signin">
+
+
+	<div style="height: 50px;">
+		<div class="alert alert-danger" ng-hide="bootstrapAlert"
+			align="center">
+			<strong>{{ErrorMessage}}</strong>
+		</div>
+	</div>
+
+
+	<!-- <div id="left"> -->
+		<form>
+			
+
+					<table class="table">
+						<tr>
+						<td style="font-family: Verdana; color: white; font-size: 16px;"><b>Select Year</b></td>
+							<td><select id="selectYear" ng-model="selectedYear"
+								ng-init="selectedYear" ng-options="year for year in years"
+								class="form1-control1" ng-change="countrySelected(getCountry,selectedYear)">
+									<option value="">Please Select a Year</option>
+							</select></td>
+							<td style="font-family: Verdana; color: white; font-size: 16px;"><b>Select Country</b></td>
+							<td><select ng-model="getCountry" ng-init="getCountry"
+								class="form1-control1"
+								ng-options="name for name in countrynames"
+								ng-change="countrySelected(getCountry,selectedYear);show=true">
+									<option value="">Please Select Country</option>
+									<!-- ;getDays(selectedYear,getCountry) -->
+
+							</select></td> 
+							<h4 style="font-family: Verdana; color: white; font-size: 16px;"><b>Auto save facility available for this feature</b></h4>
+						</tr>
+					</table>
+
+<!-- 					<div ng-show="show"> -->
+
+						<table class="table">
+							<tr>
+								<th style="font-family: Verdana; color: white; font-size: 16px;">Month</th>
+								<th style="font-family: Verdana; color: white; font-size: 16px;" ng-repeat="city in cities">{{city.city}}</th>
+							</tr>
+							<tr>
+								<td style="font-family: Verdana; color: white; font-size: 16px;">January</td>
+								<td ng-repeat="record in Records track by $index"> <input type="number" value="{{record}}" min = 1 max = 23 required
+								class="user" ng-model="day" ng-blur="saveDays(selectedYear,getCountry,$index,day,'January')" ng-change="clrDesc()" >{{record.location_City}}</td>
+							</tr>
+							<tr>
+								<td style="font-family: Verdana; color: white; font-size: 16px;">February</td>
+								<td ng-repeat="record1 in Records1 track by $index"> <input type="number" value="{{record1}}" min = 1 max = 23 required
+								 class="user" ng-model="day" ng-blur="saveDays(selectedYear,getCountry,$index,day,'February')" ng-change="clrDesc()">{{record.location_City}}</td>
+ 
+							</tr>
+							<tr>
+								<td style="font-family: Verdana; color: white; font-size: 16px;">March</td>
+								<td ng-repeat="record2 in Records2 track by $index"> <input type="number" value="{{record2}}" min = 1 max = 23 required
+								class="user" ng-model="day" ng-blur="saveDays(selectedYear,getCountry,$index,day,'March')" ng-change="clrDesc()">{{record.location_City}}</td>
+
+							</tr>
+							<tr>
+								<td style="font-family: Verdana; color: white; font-size: 16px;">April</td>
+								<td ng-repeat="record3 in Records3 track by $index"> <input type="number" value="{{record3}}" min = 1 max = 23 required
+								class="user" ng-model="day" ng-blur="saveDays(selectedYear,getCountry,$index,day,'April')" ng-change="clrDesc()">{{record.location_City}}</td>
+							</tr>
+							<tr>
+								<td style="font-family: Verdana; color: white; font-size: 16px;">May</td>
+								<td ng-repeat="record4 in Records4 track by $index"> <input type="number" value="{{record4}}" min = 1 max = 23 required
+								class="user" ng-model="day" ng-blur="saveDays(selectedYear,getCountry,$index,day,'May')" ng-change="clrDesc()">{{record.location_City}}</td>
+							</tr>
+							<tr>
+								<td style="font-family: Verdana; color: white; font-size: 16px;">June</td>
+								<td ng-repeat="record5 in Records5 track by $index"> <input type="number" value="{{record5}}" min = 1 max = 23 required
+								class="user" ng-model="day" ng-blur="saveDays(selectedYear,getCountry,$index,day,'June')" ng-change="clrDesc()">{{record.location_City}}</td>
+							</tr>
+							<tr>
+								<td style="font-family: Verdana; color: white; font-size: 16px;">July</td>
+								<td ng-repeat="record6 in Records6 track by $index"> <input type="number" value="{{record6}}" min = 1 max = 23 required
+								class="user" ng-model="day" ng-blur="saveDays(selectedYear,getCountry,$index,day,'July')" ng-change="clrDesc()">{{record.location_City}}</td>
+							</tr> 
+							<tr>
+								<td style="font-family: Verdana; color: white; font-size: 16px;">August</td>
+								<td ng-repeat="record7 in Records7 track by $index"> <input type="number" value="{{record7}}" min = 1 max = 23 required
+								class="user" ng-model="day" ng-blur="saveDays(selectedYear,getCountry,$index,day,'August')" ng-change="clrDesc()">{{record.location_City}}</td>
+							</tr>
+							<tr>
+								<td style="font-family: Verdana; color: white; font-size: 16px;">September</td>
+								<td ng-repeat="record8 in Records8 track by $index"> <input type="number" value="{{record8}}" min = 1 max = 23 required
+								class="user" ng-model="day" ng-blur="saveDays(selectedYear,getCountry,$index,day,'September)" ng-change="clrDesc()">{{record.location_City}}</td>
+							</tr>
+							<tr>
+								<td style="font-family: Verdana; color: white; font-size: 16px;">October</td>
+								<td ng-repeat="record9 in Records9 track by $index"> <input type="number" value="{{record9}}" min = 1 max = 23 required
+								class="user" ng-model="day" ng-blur="saveDays(selectedYear,getCountry,$index,day,'October')" ng-change="clrDesc()">{{record.location_City}}</td>
+							</tr>
+							<tr>
+								<td style="font-family: Verdana; color: white; font-size: 16px;">November</td>
+								<td ng-repeat="record10 in Records10 track by $index"> <input type="number" value="{{record10}}" min = 1 max = 23 required
+								class="user" ng-model="day" ng-blur="saveDays(selectedYear,getCountry,$index,day,'November')" ng-change="clrDesc()">{{record.location_City}}</td>
+							</tr>
+							<tr>
+								<td style="font-family: Verdana; color: white; font-size: 16px;">December</td>
+								<td ng-repeat="record11 in Records11 track by $index"> <input type="number" value="{{record11}}" min = 1 max = 23 required
+								class="user" ng-model="day" ng-blur="saveDays(selectedYear,getCountry,$index,day,'December')" ng-change="clrDesc()">{{record.location_City}}</td>
+							</tr>
+						</table>
+					
+				</form>	
+
+				
+		</div>
+		
+
+
+<!-- 	</div> -->
+
+	

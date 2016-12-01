@@ -1,0 +1,62 @@
+<h1 align="center">Location of Operation</h1>
+
+
+
+<div class="signin">
+	<div style="height: 50px;">
+		<div class="alert alert-danger" ng-hide="bootstrapAlert" 
+			align="center">
+			<strong>{{ErrorMessage}}</strong>
+		</div>
+	</div>
+    <form>
+		       <table class="table">
+					<tr>
+						<td style="font-family: Verdana; color: white; font-size: 16px;"><b>Country</b></td>
+
+						<td><select ng-model="selectedCountry" ng-init="selectedCountry"
+							class="form1-control1"
+							ng-options="name for name in CountryNames"
+							ng-change="countrySelected(selectedCountry)">
+								<option value="">Please Select Country</option>
+						</select></td>
+					</tr>
+				</table>
+	</form>
+	
+    <form>
+				<table class="table">
+
+					<tr>
+						<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Country Name</b></th>
+						<td></td>
+						<th style="font-family: Verdana; color: white; font-size: 16px;"><b>City</b></th>
+						<td></td>
+						<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Rate uplift</b></th>
+						<td></td>
+						<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Delete</b></th>
+				
+					</tr>
+					
+					
+					<tr dir-paginate = "x in countryName | orderBy:['country','city'] | itemsPerPage: pageSize" current-page="currentPage">
+						<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.country}}</td>
+						<td></td>
+						<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.city}}</td>
+						<td></td>
+						<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.rateUplift | number:1}}</td>
+						<td></td>
+						<td style="font-family: Verdana; color: white; font-size: 16px;"><a  href="" type="button" ng-click="deleteGeoLocations(locationID)"><i style="color:white;" class="fa fa-trash-o fa-lg" aria-hidden="true"></i></a></td>
+						<td ng-hide="true" ng-init="locationID=x.locationId">{{x.locationId}}</td>
+					</tr>
+				</table> 
+				
+				<dir-pagination-controls boundary-links="true" template-url="views/pagination/dirPagination.tpl.html"></dir-pagination-controls>
+  </form>
+  </div>
+  
+  <!-- <div>
+  		<div align="center">
+        		<dir-pagination-controls boundary-links="true" template-url="views/pagination/dirPagination.tpl.html"></dir-pagination-controls>
+        </div>
+  </div> -->

@@ -1,0 +1,148 @@
+<html>
+<head>
+
+<meta charset="utf-8">
+
+<link href="css/center.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+	<h1 align="center">Agile Team Setup</h1>
+
+	<div class="signin" ng-controller="createAgileCtrl">
+		<div style="height: 50px;">
+			<div class="alert alert-danger" ng-hide="bootstrapAlert"
+				align="center">
+				<strong>{{ErrorMessage}}</strong>
+			</div>
+		</div>
+
+		<form>
+
+
+
+			<table class="table">
+				<tr>
+					<td style="font-family: Verdana; color: white; font-size: 16px;"><b>Agile
+							Team</b></td>
+
+					<td><input type="text" placeholder="AgileName"
+						ng-model="agileName" size="25" class="user" required
+						ng-change="clrDesc()"></td>
+
+
+					<td style="font-family: Verdana; color: white; font-size: 16px;"><b>LOB</b></td>
+
+
+					<td><select ng-model="selectedLob" ng-init="selectedLob"
+						class="form1-control1" ng-options="name for name in names"
+						ng-change="lobSelected(selectedLob)">
+							<option value="">Please Select LOB</option>
+					</select></td>
+				</tr>
+
+
+
+
+				<tr>
+					<td style="font-family: Verdana; color: white; font-size: 16px;"><b>SOW
+							NAME</b></td>
+
+					<td><select id="selectSow" ng-model="selectedSow"
+						ng-init="selectedSow" ng-options="name for name in namesEdit"
+						class="form1-control1" ng-change="SowSelected(selectedSow)">
+							<option value="">Please Select SOW NAME</option>
+					</select></td>
+
+					<td style="font-family: Verdana; color: white; font-size: 16px;"><b>DID</b></td>
+
+					<td><select ng-model="data3.selectedOption"
+						ng-init="SelectedDid" ng-options="did for did in didsEdit"
+						class="form1-control1"
+						ng-change="didSelected(data3.selectedOption)">
+							<option value="">Please Select DID</option>
+					</select></td>
+				<tr>
+					<td style="font-family: Verdana; color: white; font-size: 16px;"><b>DM
+							NAME</b></td>
+					<td><input type="text" placeholder="DM Name" size="25"
+						class="form1-control1" ng-model="dm" readonly required
+						ng-change="clrDesc()"></td>
+
+					<td style="font-family: Verdana; color: white; font-size: 16px;"><b>PGM</b></td>
+					<td><input type="text" placeholder="PGM Name"
+						class="form1-control1" ng-model="pgm" readonly required
+						ng-change="clrDesc()"></td>
+				</tr>
+
+				<tr>
+					<td style="font-family: Verdana; color: white; font-size: 16px;"><b>PM
+							Name</b></td>
+					<td><input type="text" placeholder="PM Name"
+						class="form1-control1" ng-model="pmName" required
+						ng-change="clrDesc()"></td>
+
+					<td style="font-family: Verdana; color: white; font-size: 16px;"><b>WO
+							ID</b></td>
+
+					<td><select ng-model="data2.selectedOption"
+						ng-init="selectWoid" ng-options="woid for woid in woidsEdit"
+						class="form1-control1" ng-change="clrDesc()">
+							<option value="">Please Select WOID</option>
+					</select></td>
+
+				</tr>
+
+				<tr>
+					<td style="font-family: Verdana; color: white; font-size: 16px;"><b>ART</b></td>
+					<td><input type="text" placeholder="Agile Release Train"
+						class="form1-control1" ng-model="art" required
+						ng-change="clrDesc()"></td>
+
+					<td style="font-family: Verdana; color: white; font-size: 16px;"><b>Select
+							Run or Change</b></td>
+					<td><select ng-model="runChange"
+						ng-options="item for item in items" class="form1-control1"
+						ng-change="clrDesc()">
+							<option value="">Please Select</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td style="font-family: Verdana; color: white; font-size: 16px;"><b>Client
+							Manager Name</b></td>
+					<td><input type="text" placeholder="Client Manager Name"
+						class="form1-control1" ng-model="clientMgnrName" required
+						ng-change="clrDesc()"></td>
+
+					<!-- <td style="font-family: Verdana; color: white; font-size: 16px;">Agile
+						Type</td>
+					<td><input type="text" placeholder="Agile Type" class="user"
+						ng-model="agileType" required ng-change="clrDesc()"></td> -->
+						<td style="font-family: Verdana; color: white; font-size: 16px;">Agile
+						Type</td>
+					<td><select ng-model="agileType"
+						ng-options="item for item in AllAgileTypes" class="form1-control1"
+						ng-change="clrDesc()">
+							<option value="">Please Select Agile Type</option>
+					</select></td>	
+						
+						
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>
+						<button class="btn btn-primary pull-right" ng-disabled="disabled"
+							ng-click='saveAgile(agileName,selectedLob,selectedSow,data2.selectedOption,dm,pgm,pmName,data3.selectedOption,art,runChange,clientMgnrName,agileType)'>SAVE</button>
+					</td>
+				</tr>
+			</table>
+
+
+		</form>
+
+	</div>
+</body>
+</html>

@@ -1,0 +1,349 @@
+<style>
+.panel-group .panel {
+	border-radius: 0;
+	box-shadow: none;
+	background-color: rgba(45, 60, 65, 0.27);
+}
+
+.panel-default>.panel-heading {
+	padding: 0;
+	border-radius: 0;
+	color: #212121;
+	background-color: rgba(45, 60, 65, 0.27);
+}
+
+.panel-title {
+	font-size: 14px;
+}
+
+.panel-title>a {
+	display: block;
+	padding: 15px;
+	text-decoration: none;
+	color: white;
+	font-family: Verdana;
+}
+
+.more-less {
+	float: right;
+	color: white;
+}
+
+.panel-default>.panel-heading+.panel-collapse>.panel-body {
+	border-top-color: #EEEEEE;
+	background-color: rgba(45, 60, 65, 0.27);
+}
+
+.demo {
+	padding-top: 60px;
+	padding-bottom: 110px;
+	background-color: rgba(45, 60, 65, 0.27);
+}
+</style>
+
+
+</head>
+<body>
+	<h1 align="center">
+		<b>Edit SOW Setup</b>
+	</h1>
+	<div class="signin" ng-controller="editSowCtrl">
+		<div style="height: 50px;">
+			<div class="alert alert-danger" ng-hide="bootstrapAlert"
+				align="center">
+				<strong>{{ErrorMessage}}</strong>
+			</div>
+		</div>
+
+		<table class="table">
+
+			<tr>
+				<td><select id="selectSow" ng-model="selectedSow"
+					ng-init="selectedSow" ng-options="name for name in namesEdit"
+					class="form1-control1">
+						<option value="">Please Select SOW NAME</option>
+				</select></td>
+
+				<td><button class="btn btn-primary" ng-disabled="disabled"
+						ng-click='fetchSow(selectedSow)'>GO</button></td>
+
+			</tr>
+		</table>
+
+		<div class="panel-group" id="accordion" role="tablist"
+			aria-multiselectable="true">
+
+			<div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="headingOne">
+					<h4 class="panel-title">
+						<a role="button" data-toggle="collapse" data-parent="#accordion"
+							data-target="#collapseOne" aria-expanded="true"
+							aria-controls="collapseOne" onclick="toggleIcon('editSow')">
+						
+							<i id="editSow" class="more-less glyphicon glyphicon-hand-down" ></i>
+							
+							Edit SOW
+						</a>
+					</h4>
+				</div>
+				<div id="collapseOne" class="panel-collapse collapse"
+					role="tabpanel" aria-labelledby="headingOne">
+					<div class="panel-body">
+						<table class="table">
+
+							<tr>
+								<td style="font-family: Verdana; color: white; font-size: 16px;"><b>SOW
+										ID</b></td>
+
+								<td><input type="text" placeholder="SOW Id" size="25"
+									ng-model="SowIdEdit" id="Sow Id" class="user" required
+									ng-change="clrDesc()"></td>
+								<td style="font-family: Verdana; color: white; font-size: 16px;"><b>LOB</b></td>
+
+								<td><select id="selectLob" ng-model="data1.selectedOption"
+									ng-options="name for name in lobnamesedit"
+									class="form1-control1" ng-change="clrDesc()">
+										<option value="">Please Select LOB</option>
+								</select></td>
+							</tr>
+
+							<tr>
+								<td style="font-family: Verdana; color: white; font-size: 16px;"><b>SOW
+										Name</b></td>
+
+								<td><input type="text" placeholder="SOW Name" size="25"
+									ng-model="sowName" id="Sow/Name" class="user" required
+									ng-change="clrDesc()"></td>
+								<td style="font-family: Verdana; color: white; font-size: 16px;"><b>SOW
+										Amendment</b></td>
+
+								<td><input type="text" placeholder="SOW Amendment"
+									size="25" ng-model="SowAmendment" class="user"
+									ng-change="clrDesc()"></td>
+							</tr>
+
+
+							<tr>
+                <td style="font-family: Verdana; color: white; font-size: 16px;"><b>Start Date</b></td>
+							
+								<td><div datepicker datepicker-class="test-custom-class"
+										date-typer="true" date-format="MM-dd-yyyy">
+										<input ng-model="startDate" type="text"
+											placeholder="StartDate" value="{{startDate}}"
+											class="angular-datepicker-input user" ng-change="clrDesc()"
+											required />
+									</div></td>
+
+           <td style="font-family: Verdana; color: white; font-size: 16px;"><b>End Date</b></td>
+								
+								<td><div datepicker datepicker-class="test-custom-class"
+										date-typer="true" date-format="MM-dd-yyyy">
+										<input ng-model="endDate" type="text" placeholder="EndDate"
+											class="angular-datepicker-input user" value="{{endDate}}"
+											ng-change="clrDesc()" required />
+									</div></td>
+							</tr>
+
+
+							<tr>
+					<td style="font-family: Verdana; color: white; font-size: 16px;"><b>Approved Contarctual Spend</b></td>		
+							
+								<td><input type="number"
+									placeholder="Approved Contarctual Spend" size="25"
+									value={{apprvdCtrlSpnd}} ng-model="apprvdCtrlSpnd" class="user"
+									ng-change="clrDesc()"></td>
+
+
+  <td style="font-family: Verdana; color: white; font-size: 16px;"><b>Project Name</b></td>
+							
+								<td><input type="text" placeholder="Project Name" size="25"
+									ng-model="pname" id="pname" class="user" ng-change="clrDesc()"></td>
+
+
+
+							</tr>
+
+							<tr>
+					<td style="font-family: Verdana; color: white; font-size: 16px;"><b>PGM</b></td>
+								
+								<td><input type="text" placeholder="PGM" size="25"
+									ng-model="pgm" id="PGM" class="user" required
+									ng-change="clrDesc()"></td>
+					<td style="font-family: Verdana; color: white; font-size: 16px;"><b>DM Name</b></td>			
+								
+								<td><input type="text" placeholder="DM Name" size="25"
+									ng-model="dm" class="user" required ng-change="clrDesc()"></td>
+
+
+							</tr>
+
+
+
+							<tr>
+								<td><input type="text" placeholder="ID" ng-model="id"
+									ng-hide="true" class="user" required ng-change="clrDesc()"></td>
+								<td></td>
+								<td><button class="btn btn-primary" ng-disabled="disabled"
+										ng-click='upadteSow(SowIdEdit,SowAmendment,startDate,endDate,sowName,apprvdCtrlSpnd,data1.selectedOption,pgm,dm,pname,id)'>Update</button></td>
+								<td></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="headingTwo">
+					<h4 class="panel-title">
+						<a class="collapsed" role="button" data-toggle="collapse"
+							data-parent="#accordion" data-target="#collapseTwo"
+							aria-expanded="false" aria-controls="collapseTwo"
+							onclick="toggleIcon('editDidWO')"> <i id="editDidWO"
+							class="more-less glyphicon glyphicon-hand-down"></i> Edit
+							DID/WOID
+						</a>
+					</h4>
+				</div>
+				<div id="collapseTwo" class="panel-collapse collapse"
+					role="tabpanel" aria-labelledby="headingTwo">
+					<div class="panel-body">
+						<table class="row">
+							<tr>
+								<th class="col-md-2" style="font-family: Verdana; color: white; font-size: 16px;"><b>Current WOID</b></th>
+								<th class="col-md-2" style="font-family: Verdana; color: white; font-size: 16px;"><b>Corrected WOID</b></th>
+								<th class="col-md-2" style="font-family: Verdana; color: white; font-size: 16px;"><b>Budget</b></th>
+								<th class="col-md-1" style="font-family: Verdana; color: white; font-size: 16px;"><b>Purchase Order</b></th>
+								<th class="col-md-2" style="font-family: Verdana; color: white; font-size: 16px;"><b>D.I.D</b></th>
+								<th class="col-md-2" style="font-family: Verdana; color: white; font-size: 16px;"><b>CapitalOne Manager</b>	</th>
+								<th></th>
+								<th class="col-md-1">Update</th>
+							</tr>
+							<tr ng-repeat="x in output">
+
+								<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.woid}} <input type="text" value="{{x.woid}}"
+									ng-init="edit.woid1=x.woid" ng-model="edit.woid1"
+									ng-hide="true" required ng-change="clrDesc()"></td>
+
+								<td><input type="text" value="{{x.woid}}"
+									ng-init="edit.woid=x.woid" ng-model="edit.woid" class="user"
+									required ng-change="clrDesc()"></td>
+
+								<td><input type="number" value="{{x.budget | number:0}}"
+									ng-init="edit.budget=x.budget" ng-model="edit.budget"
+									class="user" required ng-change="clrDesc()"></td>
+
+								<td><input type="text" value="{{x.po}}"
+									ng-init="edit.po=x.po" ng-model="edit.po" class="user" required
+									ng-change="clrDesc()"></td>
+
+
+
+								<td><input type="text" value="{{x.did}}"
+									ng-init="edit.did=x.did" ng-model="edit.did" class="user"
+									required ng-change="clrDesc()"></td>
+
+								<td><input type="text" value="{{x.caponemgr}}"
+									ng-init="edit.caponemgr=x.caponemgr" ng-model="edit.caponemgr"
+									class="user" required ng-change="clrDesc()"></td>
+
+								<td><input type="text" value="{{x.id}}"
+									ng-init="edit.id=x.id" ng-model="edit.id" ng-hide="true"
+									required ng-change="clrDesc()"></td>
+
+								<td><button class="btn btn-primary" ng-disabled="disabled"
+										ng-click='saveWoidsForSow(edit.woid,edit.caponemgr,edit.budget,edit.po,edit.did,edit.id,SowIdEdit,apprvdCtrlSpnd)'>Update</button>
+								</td>
+							</tr>
+
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="headingThree">
+					<h4 class="panel-title">
+						<a class="collapsed" role="button" data-toggle="collapse"
+							data-parent="#accordion" data-target="#collapseThree"
+							aria-expanded="false" aria-controls="collapseThree"
+							onclick="toggleIcon('AddDidWO')"> <i id="AddDidWO"
+							class="more-less glyphicon glyphicon-hand-down"></i> Add DID/WOID
+						</a>
+					</h4>
+				</div>
+				<div id="collapseThree" class="panel-collapse collapse"
+					role="tabpanel" aria-labelledby="headingThree">
+					<div class="panel-body">
+						<table class="table">
+
+
+							<tr>
+								<th style="font-family: Verdana; color: white; font-size: 16px;"><b>WOID</b></th>
+								<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Budget</b></th>
+								<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Purchase Order</b></th>
+								<th style="font-family: Verdana; color: white; font-size: 16px;"><b>DID</b></th>
+								<th style="font-family: Verdana; color: white; font-size: 16px;"><b>CapOne Manager</b></th>
+							</tr>
+							<tr>
+								<td>
+									<div class="form-group" data-ng-repeat="choice in choices">
+										<label for="choice" ng-show="showChoiceLabel(choice)">WOID</label>
+										<input type="text" ng-model="choice.woid" name=""
+											placeholder="WOID" class="user" required
+											ng-change="clrDesc()">
+										<button class="btn btn-primary"
+											ng-show="showAddChoice(choice)" ng-click="addNewChoice()">+</button>
+										<button class="btn btn-danger" ng-show="showAddChoice(choice)"
+											ng-click="removeChoice()" data-toggle="popover"
+											data-trigger="hover" data-content="Delete feild"
+											ng-disabled="disable_remove">-</button>
+									</div>
+								</td>
+
+
+								<td>
+									<div class="form-group" data-ng-repeat="choice in choices">
+										<label for="choice" ng-show="showChoiceLabel(choice)">Budget</label>
+										<input type="number" ng-model="choice.budget" name=""
+											placeholder="Budget" class="user" required
+											ng-change="clrDesc()">
+									</div>
+								</td>
+								<td>
+									<div class="form-group" data-ng-repeat="choice in choices">
+										<label for="choice" ng-show="showChoiceLabel(choice)">PO</label>
+										<input type="text" ng-model="choice.po" name=""
+											placeholder="Purchase Order" class="user" required
+											ng-change="clrDesc()">
+									</div>
+								</td>
+
+								<td>
+									<div class="form-group" data-ng-repeat="choice in choices">
+										<label for="choice" ng-show="showChoiceLabel(choice)">DID</label>
+										<input type="text" ng-model="choice.did" name=""
+											placeholder="DID" class="user" required ng-change="clrDesc()">
+									</div>
+								</td>
+
+								<td>
+									<div class="form-group" data-ng-repeat="choice in choices">
+										<label for="choice" ng-show="showChoiceLabel(choice)">CapOne
+											Egmnt Manager</label> <input type="text"
+											ng-model="choice.caponeManager" name=""
+											placeholder="CapOne Engagement Manager" class="user" required
+											ng-change="clrDesc()">
+									</div>
+								</td>
+							</tr>
+						</table>
+
+						<button class="btn btn-primary" ng-disabled="disabled"
+							ng-click='saveWOID(SowIdEdit,apprvdCtrlSpnd)'>Add</button>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<!-- panel-group -->
+	</div>

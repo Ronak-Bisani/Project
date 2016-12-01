@@ -1,0 +1,317 @@
+<h1 align="center">Input Actual</h1>
+
+<div class="signin1" ng-controller="ActualCtrl">
+
+	<div style="height: 50px;">
+		<div class="alert alert-danger" ng-hide="bootstrapAlert"
+			align="center">
+			<strong>{{ErrorMessage}}</strong>
+		</div>
+	</div>
+	
+	<form>
+		<table class="table">
+			<tr>
+				<td style="font-family: Verdana; color: white; font-size: 16px;"><b>LOB</b></td>
+				<td>	
+					<select ng-model="selectedLob" ng-init="selectedLob"
+							class="form1-control1"
+							ng-options="name for name in lobNames"
+							ng-change="lobSelected(selectedLob)">
+							<option value="">Please Select LOB</option>
+					</select>
+				</td>
+				
+				<td style="font-family: Verdana; color: white; font-size: 16px;"><b>SOW NAME</b></td>
+				<td>
+					<select ng-model="selectedSow" ng-init="selectedSow"
+							ng-options="name for name in namesEdit"
+							class="form1-control1"
+							ng-change="AssignSowSelected(selectedSow)">
+							<option value="">Please Select SOW NAME</option>
+					</select>
+				</td>
+										
+				<td style="font-family: Verdana; color: white; font-size: 16px;"><b>Agile Name</b></td>
+				<td>
+					<select ng-model="selectedAgileTeam" ng-init="agileName"
+							ng-options="agilename for agilename in agilenNamesEdit"
+							class="form1-control1"
+							ng-change="clrDesc()">
+							<option value="">Please Select Agile NAME</option>
+					</select>
+				</td>
+
+				<td>
+					<button class="btn btn-primary" ng-click='fetch(selectedLob,selectedSow,selectedAgileTeam)'>GO</button>
+				</td>
+
+			</tr>
+
+		</table>
+	</form>
+
+	<form>
+		<table class="table">
+
+			<tr>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Resource Name</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Location</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>City</b></th>
+				<td></td>
+				<td></td>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Working Days</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Leaves</b></th>
+				<td></td>
+				<td></td>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Comments</b></th>
+				<td></td>
+				<td></td>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Billing Days</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Hours</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Role</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Currency</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Rate</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Amount</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Month</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Year</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>PM Name</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>DM Name</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>PGM Name</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>CapOne ID</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Wipro Emp ID</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Project Name</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>DID</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>WO ID</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>PO #</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Project Type</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Project Sub Type</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Work Type</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Bundle</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>SO/Contract #</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>SO/Contract Start Date</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>SO/Contract End Date</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Approved Contractual Spend</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>ART</b></th>
+			</tr>
+
+			<tr ng-repeat="x in agileName">
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.resourceName}}</td>
+				<td></td>
+				<td  style="font-family: Verdana; color: white; font-size: 16px;" ng-init="location=x.location_Type" ng-model="location">{{x.location_Type}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.location}}</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>
+					<input type="text" placeholder="WorkingDays"
+		 					ng-init="WorkDays=x.workingDays" id="wdays" ng-model="WorkDays" ng-change="clrDesc()"
+		 					ng-blur="saveActual11(location,ASID,WorkDays,leave,Comment,WorkDays-leave,rate,AC_ID)"
+							size="100px" class="user">
+				</td>
+				<td></td>
+				<td>
+					<input type="text" placeholder="Leaves"
+							ng-init="leave=x.leaves" ng-model="leave" size="100px" ng-change="clrDesc()"
+							ng-blur="saveActual11(location,ASID,WorkDays,leave,Comment,WorkDays-leave,rate,AC_ID)"
+							class="user">
+				</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>
+					<textarea name="comments" id="comments" cols="25"
+							ng-init="Comment=x.comments" ng-model="Comment" rows="2" ng-change="clrDesc()"
+							ng-blur="saveActual11(location,ASID,WorkDays,leave,Comment,WorkDays-leave,rate,AC_ID)"
+							size="100px" class="user">
+					</textarea>
+				</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{WorkDays-leave}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{(x.location_Type === "Offshore" ? (WorkDays-leave)*8.8
+							: (WorkDays-leave)*8) | number:2}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.role}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.currency}}</td>
+				<td></td>
+				<td  style="font-family: Verdana; color: white; font-size: 16px;" ng-init="rate=x.rate" ng-model="rate">{{x.rate}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{(x.location_Type === "Offshore" ?
+							(WorkDays-leave)*x.rate*8.8 : (WorkDays-leave)*x.rate*8) |number:2}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.month}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.year}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.PM_Name}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.DM_name}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.PGM_name}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.Cap_One_Id}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.Wipro_Emp_Id}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.Project_Name}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.DID}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.woid}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.PO_No}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.Project_Type}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.Project_Sub_Type}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.work_Type}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.Bundle}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.SO_No}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.So_Start_Date}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.So_End_Date}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.ApprovedContractualSpend}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.ART}}</td>
+				<td>
+					<input type="text" ng-init="ASID=x.assign_id"
+							ng-model="ASID" size="100px" ng-hide="true" class="user"
+							readonly></input>
+				</td>
+				<td><input type="text" ng-init="AC_ID=x.actual_id"
+							ng-model="AC_ID" size="100px" ng-hide="true" class="user"
+							readonly required ng-change="clrDesc()"></td>
+			</tr>
+		</table>
+
+		<button class="btn btn-primary" ng-click='saveActual()' ng-disabled="disabled">Save</button>
+		<button class="btn btn-primary" ng-click='exportData(selectedLob,selectedSow,selectedAgileTeam)'>Download</button>
+		
+		
+			<div id="exportable">
+				<table class="table" ng-hide="true">
+
+					<thead>
+						<tr>
+							<th>LOB</th>
+							<th>SowName</th>
+							<th>Agile Team</th>
+							<th>Resource Name</th>
+							<th>Location</th>
+							<th>City</th>
+							<th>Working Days</th>
+							<th>Leaves</th>
+							<th>Comments</th>
+							<th>Billing Days</th>
+							<th>Hours</th>
+							<th>Role</th>
+							<th>Currency</th>
+							<th>Rate</th>
+							<th>Amount</th>
+							<th>Month</th>
+							<th>Year</th>
+							<th>PM Name</th>
+							<th>DM Name</th>
+							<th>PGM Name</th>
+							<th>CapOne ID</th>
+							<th>Wipro Emp ID</th>
+							<th>Project Name</th>
+							<th>DID</th>
+							<th>WO ID</th>
+							<th>PO #</th>
+							<th>Project Type</th>
+							<th>Project Sub Type</th>
+							<th>Work Type</th>
+							<th>Bundle</th>
+							<th>SO/Contract #</th>
+							<th>SO/Contract Start Date</th>
+							<th>SO/Contract End Date</th>
+							<th>Approved Contractual Spend</th>
+							<th>ART</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr ng-repeat="x in downloadActual">
+							<td>{{selectedLob}}</td>
+							<td>{{selectedSow}}</td>
+							<td>{{selectedAgileTeam}}</td>
+							<td>{{x.resourceName}}</td>
+							<td>{{x.location_Type}}</td>
+							<td>{{x.location}}</td>
+							<td>{{x.workingDays}}</td>
+							<td>{{x.leaves}}</td>
+							<td>{{x.comments}}</td>
+							<td>{{x.billingDays}}</td>
+							<td>{{x.hours}}</td>
+							<td>{{x.role}}</td>
+							<td>{{x.currency}}</td>
+							<td>{{x.rate}}</td>
+							<td>{{x.amount}}</td>
+							<td>{{x.month}}</td>
+							<td>{{x.year}}</td>
+							<td>{{x.PM_Name}}</td>
+							<td>{{x.DM_name}}</td>
+							<td>{{x.PGM_name}}</td>
+							<td>{{x.Cap_One_Id}}</td>
+							<td>{{x.Wipro_Emp_Id}}</td>
+							<td>{{x.Project_Name}}</td>
+							<td>{{x.DID}}</td>
+							<td>{{x.woid}}</td>
+							<td>{{x.PO_No}}</td>
+							<td>{{x.Project_Type}}</td>
+							<td>{{x.Project_Sub_Type}}</td>
+							<td>{{x.work_Type}}</td>
+							<td>{{x.Bundle}}</td>
+							<td>{{x.SO_No}}</td>
+							<td>{{x.So_Start_Date}}</td>
+							<td>{{x.So_End_Date}}</td>
+							<td>{{x.ApprovedContractualSpend}}</td>
+							<td>{{x.ART}}</td>
+						</tr>
+					</tbody>
+				</table>
+		    </div>		
+	</form>
+</div>

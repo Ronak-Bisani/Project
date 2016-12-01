@@ -1,0 +1,325 @@
+
+
+<style type="text/css">
+.modal {
+	
+}
+.modal-body {
+	position: relative;
+	padding: 5px;
+}
+.vertical-alignment-helper {
+	width: 200px;
+	height: 150px;
+	position: absolute;
+	left: 5%;
+	top: 15%;
+	margin-left: 120px;
+	margin-top: -100px;
+
+}
+
+.vertical-align-center {
+	/* To center vertically */
+	display: table-cell;
+	vertical-align: middle;
+	
+}
+
+.modal-content {
+	/* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+	width: 100%;
+	height: 45%;
+	/* To center horizontally */
+	margin: 0px;
+	background-color: rgba(128, 128, 128, 1.0);
+}
+.modal-footer {
+	padding: 1px;
+	text-align: right;
+	border-top: 1px solid #e5e5e5
+}
+</style>
+<body>
+<h1 align="center" style="font-size: 20px;"><b>Edit Assignment</b></h1>
+	<div class="signin" ng-controller="editAssignCtrl">
+		<div style="height: 50px;">
+			<div class="alert alert-danger" ng-hide="bootstrapAlert"
+				align="center">
+				<strong>{{ErrorMessage}}</strong>
+			</div>
+		</div>
+		<form novalidate>
+
+
+			<table class="table">
+				<tr>
+					<th align="center">Please Select Resource Name</th>
+				</tr>
+
+				<tr>
+					<td><select ng-model="assign.resourceName"
+						ng-init="resourceName"
+						ng-options="resource for resource in resourceNames"
+						class="form1-control1"
+						ng-change="showAssignment(assign.resourceName)">
+							<option value="">Please Select Resource Name</option>
+					</select></td>
+
+
+				</tr>
+
+			</table>
+			<table class="table">
+
+				<tr>
+					<th style="font-family: Verdana; color: white; font-size: 16px;">Resource Name</th>
+					<td></td>
+					<th style="font-family: Verdana; color: white; font-size: 16px;">LOB</th>
+					<td></td>
+					<th style="font-family: Verdana; color: white; font-size: 16px;">SOW</th>
+					<td></td>
+					<th style="font-family: Verdana; color: white; font-size: 16px;">Agile Name</th>
+					<td></td>
+					<th style="font-family: Verdana; color: white; font-size: 16px;">Start Date</th>
+					<td></td>
+					<th style="font-family: Verdana; color: white; font-size: 16px;">End Date</th>
+					<td></td>
+					<th style="font-family: Verdana; color: white; font-size: 16px;">Percentage</th>
+					<td></td>
+					<th style="font-family: Verdana; color: white; font-size: 16px;">Action</th>
+					<td></td>
+				</tr>
+
+
+				<tr ng-repeat="x in assignResource">
+
+					<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.ResourceName}}</td>
+					<td></td>
+					<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.lob}}</td>
+					<td></td>
+					<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.sowName}}</td>
+					<td></td>
+					<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.agileName}}</td>
+					<td></td>
+					<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.startDate}}</td>
+					<td></td>
+					<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.endDate}}</td>
+					<td></td>
+					<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.percentage}}</td>
+
+					<td><input type="text" ng-model=assign_id
+						ng-init="assign_id=x.assign_Id" ng-hide="true" required
+						ng-change="clrDesc()"></td>
+
+					<td><button class="btn btn-primary" data-toggle="modal"
+							ng-disabled="!x.flag" data-target="#myModal"
+							ng-click='editAssignID(assign_id)'>Edit</button></td>
+
+				</tr>
+
+			</table>
+
+			<div class="modal fade" id="myModal" role="dialog">
+				<div class="vertical-alignment-helper">
+					<div class="modal-dialog vertical-align-center">
+
+						<!-- Modal content-->
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+
+								<h4 style="font-family: Verdana; color: white;" class="modal-title" align="center">Edit Assignment</h4>
+
+								<div style="height: 25px;">
+									<div class="alert alert-danger" align="center"
+										ng-hide="bootstrapAlertInModal">
+										<strong>{{ErrorMessageInModal}}</strong>
+									</div>
+								</div>
+
+
+							</div>
+							<div class="modal-body">
+
+								<table class="table table-bordered">
+									<tr>
+										<th style="font-family: Verdana; color: white;">LOB</th>
+
+										<th style="font-family: Verdana; color: white;">SOWName</th>
+
+										<th style="font-family: Verdana; color: white;">AgileName</th>
+
+										<th style="font-family: Verdana; color: white;">ResourceName</th>
+
+										<th style="font-family: Verdana; color: white;">StartDate</th>
+
+										<th style="font-family: Verdana; color: white;">EndDate</th>
+
+										<th style="font-family: Verdana; color: white;">CapitalOne EID</th>
+
+										<th style="font-family: Verdana; color: white;">Percentage</th>
+
+										<th style="font-family: Verdana; color: white;">RoleName</th>
+
+										<th style="font-family: Verdana; color: white;">Country</th>
+
+										<th style="font-family: Verdana; color: white;">City</th>
+
+										<th style="font-family: Verdana; color: white;">Rate</th>
+
+
+									</tr>
+
+									<tr ng-repeat="x in assignResourceById">
+
+
+										<td style="font-family: Verdana; color: white;">{{x.lob}}</td>
+										<td style="font-family: Verdana; color: white;">{{x.sowName}}</td>
+										<td style="font-family: Verdana; color: white;">{{x.agileName}}</td>
+										<td style="font-family: Verdana; color: white;">{{x.ResourceName}}</td>
+										<td style="font-family: Verdana; color: white;">{{x.startDate}}</td>
+										<td style="font-family: Verdana; color: white;">{{x.endDate}}</td>
+										<td style="font-family: Verdana; color: white;">{{x.capitalOneID}}</td>
+										<td style="font-family: Verdana; color: white;">{{x.percentage}}</td>
+										<td style="font-family: Verdana; color: white;">{{x.roleName}}</td>
+										<td style="font-family: Verdana; color: white;">{{x.country}}</td>
+										<td style="font-family: Verdana; color: white;">{{x.city}}</td>
+										<td style="font-family: Verdana; color: white;">{{x.assignedRate}}</td>
+
+
+										<td ng-hide="true"><input type="text"
+											ng-model="resourceName" ng-init="resourceName=x.ResourceName"
+											ng-hide="true" required ng-change="clrDesc()"></td>
+
+
+										<td ng-hide="true"><input type="text"
+											ng-model="assign_id" ng-init="assign_id=x.assign_Id"
+											ng-hide="true" required ng-change="clrDesc()"></td>
+
+									</tr>
+
+								</table>
+
+								
+
+								<table class="table">
+									<tr>
+										<td style="font-family: Verdana; color: white; font-size: 16px;"><b>LOB</b></td>
+
+										<td><select ng-model="selectedLob" ng-init="selectedLob"
+											class="form1-control1"
+											ng-options="name for name in names"
+											ng-change="lobSelected(selectedLob)">
+												<option value="">Please Select LOB</option>
+										</select></td>
+
+										<td style="font-family: Verdana; color: white; font-size: 16px;">SOW NAME</td>
+
+										<td><select ng-model="selectedSow" ng-init="selectedSow"
+											ng-options="name for name in namesEdit"
+											class="form1-control1"
+											ng-change="AssignSowSelected(selectedSow)">
+												<option value="">Please Select SOW NAME</option>
+										</select></td>
+									</tr>
+
+									<tr>
+										<td style="font-family: Verdana; color: white; font-size: 16px;">Agile Name</td>
+
+										<td><select ng-model="agileName" ng-init="agileName"
+											ng-options="agilename for agilename in agilenNamesEdit"
+											class="form1-control1"
+											ng-change="clrDesc()">
+												<option value="">Please Select Agile NAME</option>
+										</select></td>
+
+										<td style="font-family: Verdana; color: white; font-size: 16px;">CapitalOne ID</td>
+										<td><input type="text" placeholder="CapitalOne ID"
+											ng-model="capitalOneID" size="25" class="user"
+											required ng-change="clrDesc()"></td>
+
+
+									</tr>
+
+									<tr>
+
+										<td style="font-family: Verdana; color: white; font-size: 16px;">Start Date</td>
+										<td><div datepicker datepicker-class="test-custom-class"
+												date-typer="true" date-format="MM-dd-yyyy">
+												<input ng-model="startDate" type="text"
+													placeholder="StartDate" value="{{startDate}}"
+													class="angular-datepicker-input user"
+													ng-change="clrDesc()" required />
+											</div></td>
+
+
+										<td style="font-family: Verdana; color: white; font-size: 16px;">End Date</td>
+										<td><div datepicker datepicker-class="test-custom-class"
+												date-typer="true" date-format="MM-dd-yyyy">
+												<input ng-model="endDate" type="text" placeholder="EndDate"
+													class="angular-datepicker-input user"
+													value="{{endDate}}" ng-change="clrDesc()" required />
+											</div></td>
+									</tr>
+
+									<tr>
+										<td style="font-family: Verdana; color: white; font-size: 16px;">Role</td>
+										<td><select ng-model="allRoles" ng-init="allRoles"
+											ng-options="role for role in roles"
+											class="form1-control1"
+											ng-change="clrDesc()">
+												<option value="">Please Select Role</option>
+										</select></td>
+										<td style="font-family: Verdana; color: white; font-size: 16px;">Country</td>
+										<td><select ng-model="getCountry" ng-init="getCountry"
+											class="form1-control1"
+											ng-options="name for name in countrynames"
+											ng-change="countrySelected(getCountry)">
+												<option value="">Please Select Country</option>
+										</select></td>
+									</tr>
+									<tr>
+										<td style="font-family: Verdana; color: white; font-size: 16px;">City</td>
+										<td><select ng-model="getCity" ng-init="getCity"
+											class="form1-control1"
+											ng-options="name for name in cities"
+											ng-change="citySelected(allRoles,getCountry,getCity)">
+												<option value="">Please Select City</option>
+										</select></td>
+										<td style="font-family: Verdana; color: white; font-size: 16px;">Rate</td>
+										<td><input type="text" placeholder="Rate" ng-model="rate"
+											size="25" class="user" required readonly required
+											ng-change="clrDesc()"></td>
+										<td><input type="text" ng-model=assign_id ng-hide="true"
+											required ng-change="clrDesc()"></td>
+
+									</tr>
+									<tr>
+										<td style="font-family: Verdana; color: white; font-size: 16px;">Percentage %</td>
+										<td><input type="number" min="1" max="100"
+											placeholder="Percentage %" ng-model="percentage" size="25"
+											class="user" required ng-change="clrDesc()"></td>
+									</tr>
+								</table>
+
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-primary"
+									ng-disabled="disabled" data-dismiss="modal"
+									ng-click='updateAssign(selectedLob,selectedSow,agileName,startDate,endDate,allRoles,getCountry,getCity,rate,assign_id,capitalOneID,percentage)'>Update</button>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+
+		</form>
+	</div>
+
+
+</body>
+</html>

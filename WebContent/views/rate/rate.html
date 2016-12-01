@@ -1,0 +1,192 @@
+<h1 align="center">Rate Card</h1>
+
+
+<style type="text/css">
+#left {
+	float: left;
+	width: 60%;
+	height: 25em;
+	margin: 20px .2em 3px 3px;
+	font-family: "SIMPSON";
+}
+
+#content {
+	margin: 5px .10em 5px 45%;
+}
+
+#cnt2 {position;relative;
+	margin: 1em 10px;
+	height: 45em;
+	width: 100%;
+	font-family: "SIMPSON";
+}
+
+#cnt3 {position;relative;
+	margin: 1em 10px;
+	height: 15em;
+}
+</style>
+
+<div class="signin" ng-controller="rateCtrl">
+
+	<div style="height: 50px;">
+		<div class="alert alert-danger" ng-hide="bootstrapAlert"
+			align="center">
+			<strong>{{ErrorMessage}}</strong>
+		</div>
+	</div>
+
+
+		<form role="form">
+
+
+					<table class="table">
+
+						<h3 style="font-family: Verdana; color: white; font-size: 18px;"><b>Add Role & Rate</b></h3>
+						<br>
+
+						<tr>
+							<th style="font-family: Verdana; color: white; font-size: 18px;"><b>Role</b></th>
+							<th style="font-family: Verdana; color: white; font-size: 18px;"><b>India</b></th>
+							<th style="font-family: Verdana; color: white; font-size: 18px;"><b>UK</b></th>
+							<th style="font-family: Verdana; color: white; font-size: 18px;"><b>US</b></th>
+							<!-- <th ng-repeat="x in Countries" align="center">{{x.country}}</th> -->
+						</tr>
+
+						<tr>
+							<td>
+								<div class="form-group" data-ng-repeat="choice in choices">
+									<input type="text" ng-model="choice.role" name="" size="25"
+										placeholder="Role" class="form1-control1" required
+										ng-change="clrDesc()">
+										
+									<button class="btn btn-primary" ng-disabled="disabled"
+										ng-show="showAddChoice(choice)" ng-click="addNewChoice()">+</button>
+										
+									<button class="btn btn-danger" ng-show="showAddChoice(choice)"
+										ng-click="removeChoice()" data-toggle="popover"
+										data-trigger="hover" data-content="Delete feild"
+										ng-disabled="disable_remove">-</button>
+
+
+								</div>
+
+							</td>
+
+							<td>
+								<div class="form-group" data-ng-repeat="choice in choices">
+									<input type="number" ng-model="choice.rate1" name="" size="25"
+										placeholder="Rate" class="form1-control1" required
+										ng-change="clrDesc()">
+								</div>
+							</td>
+
+							<td>
+								<div class="form-group" data-ng-repeat="choice in choices">
+									<input type="number" ng-model="choice.rate2" name="" size="25"
+										placeholder="Rate" class="form1-control1" required
+										ng-change="clrDesc()">
+								</div>
+							</td>
+
+							<td>
+								<div class="form-group" data-ng-repeat="choice in choices">
+									<input type="number" ng-model="choice.rate3" name="" size="25"
+										placeholder="Rate" class="form1-control1" required
+										ng-change="clrDesc()">
+								</div>
+							</td>
+
+						</tr>
+							<tr>
+							<td></td>
+							<td></td>
+							<td>
+												<td><button class="btn btn-primary pull-right"
+							ng-disabled="disabled" ng-click='saveRoleRate()'>SAVE</button></td>
+							</td>
+							</tr>
+					</table>
+
+
+		</form>
+	</div>
+
+
+	<div class="signin" ng-controller="EditRateCtrl">
+
+
+			<form role="form">
+
+						<div id="cnt2">
+							<div button class="btn btn primary" ng-disabled="disabled"
+								ng-click="active = !active">
+								<h3 style="font-family: Verdana; color: white; font-size: 18px;"><b>Click here to Edit Rate</b></h3>
+							</div>
+
+							<div ng-hide="!active">
+
+								<table class="table">
+									<tr>
+
+										<td><select ng-model="getCountry" ng-init="getCountry"
+											class="form1-control1"
+											ng-options="name for name in countrynames"
+											ng-change="countrySelected(getCountry)">
+												<option value="">Please Select Country</option>
+										</select></td>
+
+										<td><select ng-model="getRole" ng-init="getRole"
+											class="form1-control1"
+											ng-options="name for name in roles"
+											ng-change='role1=getRole;roleSelected(getRole,getCountry)'>
+
+												<option value="">Please Select Role</option>
+										</select></td>
+
+										<!-- <td><button class="btn btn-primary"
+								ng-click='roleSelected(getRole,getCountry)'>GO</button></td>  -->
+
+
+									</tr>
+								</table>
+
+								<table class="table">
+									<tr>
+										<td style="font-family: Verdana; color: white; font-size: 18px;"><b>Role</b></td>
+										<td><input id="num" type="text"
+											class="form1-control1" ng-model="role1"
+											required ng-change="clrDesc()"></td>
+
+
+										<td><button class="btn btn-primary"
+												ng-disabled="disabled" ng-click='updateRole(getRole,role1)'>Update</button></td>
+									</tr>
+
+								</table>
+
+
+								<table class="table">
+									<tr>
+									<td style="font-family: Verdana; color: white; font-size: 18px;"><b>Rate</b></td>
+										<td><input id="num" type="number"
+											class="form1-control1" ng-model="rate"
+											value="{{rate | number:2}}" required ng-change="clrDesc()">
+										</td>
+
+
+										<td><button class="btn btn-primary"
+												ng-disabled="disabled"
+												ng-click='updateRate(getCountry,role1,rate)'>Update</button></td>
+									</tr>
+
+								</table>
+								
+
+							</div>
+						</div>
+
+			</form>
+
+
+</div>

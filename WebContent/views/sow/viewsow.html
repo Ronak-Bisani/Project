@@ -1,0 +1,182 @@
+<style>
+.panel-group .panel {
+	border-radius: 0;
+	box-shadow: none;
+	background-color: rgba(45, 60, 65, 0.27);
+}
+
+.panel-default>.panel-heading {
+	padding: 0;
+	border-radius: 0;
+	color: #212121;
+	background-color: rgba(45, 60, 65, 0.27);
+}
+
+.panel-title {
+	font-size: 14px;
+}
+
+.panel-title>a {
+	display: block;
+	padding: 15px;
+	text-decoration: none;
+	color: white;
+	font-family: Verdana;
+}
+
+.more-less {
+	float: right;
+	color: white;
+}
+
+.panel-default>.panel-heading+.panel-collapse>.panel-body {
+	border-top-color: #EEEEEE;
+	background-color: rgba(45, 60, 65, 0.27);
+}
+
+.demo {
+	padding-top: 60px;
+	padding-bottom: 5000px;
+	background-color: rgba(45, 60, 65, 0.27);
+}
+</style>
+
+<body>
+	<h1 align="center">
+		<b>SOW Setup</b>
+	</h1>
+
+	<div class="signin" ng-controller="viewSowCtrl">
+
+		<div class="panel-group" id="accordion" role="tablist"
+			aria-multiselectable="true">
+
+			<div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="headingOne">
+					<h4 class="panel-title">
+						<a role="button" data-toggle="collapse" data-parent="#accordion"
+							data-target="#collapseOne" aria-expanded="true"
+							aria-controls="collapseOne" onclick="toggleIcon('viewSow')">
+							<i id="viewSow" class="more-less glyphicon glyphicon-hand-down"></i>
+							View SOW
+						</a>
+					</h4>
+				</div>
+				<div id="collapseOne" class="panel-collapse collapse"
+					role="tabpanel" aria-labelledby="headingOne">
+					<div class="panel-body">
+						<table class="table">
+							<tr align=centre>
+								<th style="font-family: Verdana; color: white; font-size: 16px;"><b>SOW
+										Name</b></th>
+								<th style="font-family: Verdana; color: white; font-size: 16px;"><b>SOW
+										Id</b></th>
+								<th style="font-family: Verdana; color: white; font-size: 16px;"><b>LOB</b></th>
+								<th style="font-family: Verdana; color: white; font-size: 16px;"><b>DM
+										Name</b></th>
+								<th style="font-family: Verdana; color: white; font-size: 16px;"><b>PGM</b></th>
+								<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Approve
+										Contractual Spend</b></th>
+								<th style="font-family: Verdana; color: white; font-size: 16px;"><b>SOW
+										Amendment</b></th>
+								<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Start
+										Date</b></th>
+								<th style="font-family: Verdana; color: white; font-size: 16px;"><b>End
+										Date</b></th>
+								<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Project
+										Name</b></th>
+								<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Action</b></th>
+
+							</tr>
+							<tr dir-paginate="Viewsow in ViewSOWs | itemsPerPage: pageSize"
+								current-page="currentPage">
+								<td style="font-family: Verdana; color: white; font-size: 16px;">{{Viewsow.SOWName}}</td>
+								<td style="font-family: Verdana; color: white; font-size: 16px;">{{Viewsow.SOWID}}</td>
+								<td style="font-family: Verdana; color: white; font-size: 16px;">{{Viewsow.LOB}}</td>
+								<td style="font-family: Verdana; color: white; font-size: 16px;">{{Viewsow.DMName}}</td>
+								<td style="font-family: Verdana; color: white; font-size: 16px;">{{Viewsow.PGM}}</td>
+								<td style="font-family: Verdana; color: white; font-size: 16px;">{{Viewsow.ApproveContractualSpend}}</td>
+								<td
+									style="font-family: Verdana; color: whillte; font-size: 16px;">{{Viewsow.SOWAmendment}}</td>
+								<td style="font-family: Verdana; color: white; font-size: 16px;">{{Viewsow.StartDate}}
+									</div>
+								</td>
+								<td style="font-family: Verdana; color: white; font-size: 16px;">{{Viewsow.EndDate}}</td>
+								<td style="font-family: Verdana; color: white; font-size: 16px;">{{Viewsow.ProjectName}}</td>
+								<td style="font-family: Verdana; color: white; font-size: 16px;"><a
+									href="" type="button" ng-click="Deletesowview(SOWid)"> <i
+										style="color: white;" class="fa fa-trash-o fa-lg"
+										aria-hidden="true"></i></a></td>
+								<td ng-model="SOWid" ng-init="SOWid=Viewsow.id" ng-hide=true>{{Viewsow.id}}</td>
+
+							</tr>
+
+						</table>
+						<dir-pagination-controls boundary-links="true"
+							template-url="views/pagination/dirPagination.tpl.html"></dir-pagination-controls>
+					</div>
+				</div>
+			</div>
+
+			<div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="headingTwo">
+					<h4 class="panel-title">
+						<a class="collapsed" role="button" data-toggle="collapse"
+							data-parent="#accordion" data-target="#collapseTwo"
+							aria-expanded="false" aria-controls="collapseTwo"
+							onclick="toggleIcon('ViewDidWO')"> <i id="ViewDidWO"
+							class="more-less glyphicon glyphicon-hand-down"></i> View
+							DID/WOID
+						</a>
+					</h4>
+				</div>
+				<div id="collapseTwo" class="panel-collapse collapse"
+					role="tabpanel" aria-labelledby="headingTwo" currentPage="1">
+					<div class="panel-body">
+						<table class="table">
+							<tr>
+								<th style="font-family: Verdana; color: white; font-size: 16px;"><b>DID</b></th>
+								<th style="font-family: Verdana; color: white; font-size: 16px;"><b>WOID</b></th>
+								<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Budget</b></th>
+								<th style="font-family: Verdana; color: white; font-size: 16px;"><b>PO</b></th>
+								<th style="font-family: Verdana; color: white; font-size: 16px;"><b>CapOne
+										Manger</b></th>
+								<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Action</b></th>
+
+
+
+							</tr>
+							<tr dir-paginate="Viewsow in ViewSOWs | itemsPerPage: pageSize"
+								current-page="currentPage">
+								<td style="font-family: Verdana; color: white; font-size: 16px;">{{Viewsow.DID}}</td>
+								<td style="font-family: Verdana; color: white; font-size: 16px;">{{Viewsow.WOID}}</td>
+								<td style="font-family: Verdana; color: white; font-size: 16px;">{{Viewsow.Budget}}</td>
+								<td style="font-family: Verdana; color: white; font-size: 16px;">{{Viewsow.pO}}</td>
+								<td style="font-family: Verdana; color: white; font-size: 16px;">{{Viewsow.capOneMngr}}</td>
+								<td style="font-family: Verdana; color: white; font-size: 16px;"><a
+									href="" type="button" ng-click="Deletesowdid(did)"> <i
+										style="color: white;" class="fa fa-trash-o fa-lg"
+										aria-hidden="true"></i></a></td>
+								<td ng-model="did" ng-init="did=Viewsow.did_id" ng-hide="true">{{Viewsow.did_id}}</td>
+
+
+							</tr>
+
+						</table>
+						<dir-pagination-controls boundary-links="true"
+							template-url="views/pagination/dirPagination.tpl.html"></dir-pagination-controls>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="signin">
+
+
+		<button class="btnSubmit" type="button" ng-click="CreateSow()" align="center">Create
+			New SOW</button>
+		<button class="btnSubmit" type="button" ng-click="EditSow()">Edit
+			SOW</button>
+
+
+	</div>

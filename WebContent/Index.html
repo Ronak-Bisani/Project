@@ -1,0 +1,189 @@
+
+
+<!DOCTYPE html>
+<html ng-app="Angular_RestPoc">
+<head>
+
+<meta charset="ISO-8859-1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Capital One</title>
+
+<!-- css -->
+
+
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css" /> 
+
+<link href='http://fonts.googleapis.com/css?family=Oxygen:300,400,700' rel='stylesheet' type='text/css'>
+<link href="css/BootstrapLib/bootstrap.min.css" rel="stylesheet" type="text/css"> 
+<!-- <link href="css/BootstrapLib/font-awesome.css" rel="stylesheet" type="text/css"> -->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+<link href="css/formCSS/formCss.css" rel="stylesheet" type="text/css">
+
+<link href="css/alertify.bootstrap.css" rel="stylesheet" type="text/css">
+<link href="css/alertify.core.css" rel="stylesheet" type="text/css">
+<link href="css/alertify.default.css" rel="stylesheet" type="text/css">
+<link href='css/loadingBar/loading-bar.css' rel='stylesheet' type="text/css" />
+<link href='css/loadingBar/loadingapp.css' rel='stylesheet'  type="text/css" />
+<link href='css/sideNavbar/sidebar.css' rel='stylesheet'  type="text/css" />
+
+<link href="css/angularDatepicker/angularDatepicker.css" rel="stylesheet" type="text/css">
+
+<!-- scripts -->
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+
+
+<script src="JS/angularJslib/angular.js"></script>
+
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-rc.0/angular-resource.min.js"></script>
+
+
+
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<script src="https://code.angularjs.org/1.5.0/angular-cookies.js"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.12.0/ui-bootstrap-tpls.js"></script>
+
+<script src="http://code.highcharts.com/highcharts.js"></script>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script src="JS/angularChart/chart.js"></script>
+
+<script src="JS/sidebar/sidebar.js"></script>
+
+<script src="JS/progressbar/progress.js"></script>
+ <script src="JS/progressbar/loading-bar.js"></script>
+
+<script src="JS/alertifylib/alertify.js"></script>
+<script src="JS/alertifylib/alertify.min.js"></script>
+
+<script src="JS/angularDatepicker/angularDatepicker.js"></script>
+
+<script src="JS/main.js"></script>
+<script src="JS/xlsx.core.min.js"></script>
+<script src="JS/FileSaver.js"></script>
+<script src="JS/validation.js"></script>
+
+<script src="JS/homeCtrl/homeCtrl.js"></script>
+<script src="JS/homeCtrl/utility.js"></script>
+
+<script src="JS/sowCtrl/lobCtrl.js"></script>
+<script src="JS/sowCtrl/editSowCtrl.js"></script>
+<script src="JS/sowCtrl/viewLobCtrl.js"></script>
+<script src="JS/sowCtrl/viewSowCtrl.js"></script>
+
+<script src="JS/agileCtrl/createAgileCtrl.js"></script>
+<script src="JS/agileCtrl/editAgileCtrl.js"></script>
+<script src="JS/agileCtrl/viewAgileTeamDetailCtrl.js"></script>
+
+<script src="JS/assignmentCtrl/createAssignmentCtrl.js"></script>
+<script src="JS/assignmentCtrl/editAssignCtrl.js"></script>
+<script src="JS/assignmentCtrl/NoAssCtrl.js"></script>
+
+<script src="JS/adminRate/rateCtrl.js"></script>
+<script src="JS/adminRate/EditRateCtrl.js"></script>
+<script src="JS/adminRate/Viewratectrl.js"></script>
+
+<script src="JS/locationCtrl/locationCtrl.js"></script>
+<script src="JS/locationCtrl/locationViewCtrl.js"></script>
+
+<script src="JS/workingDays/workingDaysCtrl.js"></script>
+<script src="JS/workingDays/EditworkingCtrl.js"></script>
+
+<script src="JS/accruals/AccrualCtrl.js"></script>
+<script src="JS/accruals/downloadCtrl.js"></script>
+
+<script src="JS/accruals/downloadCtrl.js"></script>
+<script src="JS/accruals/reviewAccrual.js"></script>
+
+<script src="JS/actual/ActualCtrl.js"></script>
+<script src="JS/actual/reviewActual.js"></script>
+
+<script src="JS/upload/costUploadctrl.js"></script>
+<script src="JS/upload/revenueCtrl.js"></script>
+<script src="JS/upload/DailyZcopCtrl.js"></script>
+
+<script src="JS/report/chartCtrl.js"></script>
+<script src="JS/pagination/dirPagination.js"></script>
+<script src="JS/report/BHCReportCtrl.js"></script>
+
+</head>
+
+<!-- <body ng-controller="testCtrl"> -->
+
+<body ng-controller="homeCtrl" ng-style="{'background-color':'#2b2e30'}" >
+
+  <div style="height: 5px;"></div>
+	<!--nav sidebar -->
+<aside>
+  <nav class="navbar navbar-inverse sidebar navbar-fixed-top" role="navigation">
+    <!--   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"> -->
+
+<div class="nav-side-menu">
+    <div class="brand">Welcome {{name}},{{role}}</div>
+    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+  
+        <div class="menu-list">
+  
+            <ul id="menu-content" class="menu-content collapse out">
+                <li>
+                 
+                  <i class="fa fa-clock-o fa-lg"></i> {{theTime}}
+               
+                </li>
+
+                <li data-toggle="collapse" data-target="#{{category.id}}" class="collapsed" ng-repeat="category in categories">
+                  <a><i class="{{category.icon}}"></i> {{category.title}}<span class="arrow"></span></a>
+                  <ul class="sub-menu collapse" id="{{category.id}}">
+                  <li ng-repeat="item in category.items">
+                  <a href="#{{item.link}}"><i class="{{item.icon}}"></i> &nbsp;{{item.title}}</a>
+                  </li>
+                </ul>
+                </li>  
+
+                
+
+                 <li>
+                  <a href="#"  ng-click='logMeOut()'>
+                  <i class="fa fa-sign-out fa-lg"></i> Logout
+                  </a>
+                </li>
+            </ul>
+     </div>
+</div>
+  </nav>
+  
+</aside>
+
+	<div style="height: 10px;"></div>
+
+	<div id="main">
+		<div ng-view></div>
+	</div>
+	
+	<div style="height: 25px;"></div>
+
+	<!-- <footer class="navbar navbar-inverse navbar-fixed-bottom ">
+		<div class="container-fluid">
+			<div class="navbar-footer"
+			 
+				<p align="center" style="color: white; margin-top: 10px;">|
+					Privacy policy | Contact | All rights reserved @Wipro Limited-
+					INDIA © 2016-Wipro-CapitalOne</p>
+			</div>
+		</div>
+	</footer> -->
+
+	<!-- **********************Useful********************** -->
+	<!-- http://bootstrap-tutorial.bootstraptor.com/post/53191688399/bootstrap-navigation-nav-bar -->
+
+</body>
+</html>

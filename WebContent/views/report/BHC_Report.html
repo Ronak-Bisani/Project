@@ -1,0 +1,57 @@
+<h1 align="center">BHC Report</h1>
+
+
+<div class="reportDiv">
+	<div style="height: 50px;">
+		<div class="alert alert-danger" ng-hide="bootstrapAlert"
+			align="center">
+			<strong>{{ErrorMessage}}</strong>
+		</div>
+	</div>
+
+	<form>
+		<table class="table">
+			<tr>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;"><b>LOB</b></td>
+
+				<td><select ng-model="selectedLob" ng-init="selectedLob"
+					class="form1-control1" ng-options="name for name in lobNames"
+					ng-change="lobSelected(selectedLob)">
+						<option value="">Please Select LOB</option>
+				</select></td>
+
+				<td style="font-family: Verdana; color: white; font-size: 16px;"><b>SOW
+						NAME</b></td>
+				<td><select ng-model="selectedSow" ng-init="selectedSow"
+					ng-options="name for name in namesEdit" class="form1-control1"
+					ng-change="AssignSowSelected(selectedSow)">
+						<option value="">Please Select SOW NAME</option>
+				</select></td>
+
+				<td style="font-family: Verdana; color: white; font-size: 16px;"><b>Agile
+						Name</b></td>
+
+				<td><select ng-model="selectedAgileTeam" ng-init="agileName"
+					ng-options="agilename for agilename in agileNamesEdit"
+					class="form1-control1" ng-change="clrDesc()">
+						<option value="">Please Select Agile NAME</option>
+				</select></td>
+				<td ng-init="lobID" ng-model="lobID"></td>
+
+				<td><button class="btn btn-primary" ng-disabled="disabled"
+						ng-click='fetch(selectedLob,selectedSow,selectedAgileTeam)'>GO</button></td>
+
+			</tr>
+		</table>
+	</form>
+	
+
+<div style="height: 20px;"></div>
+<chart title="<b>BHC By Geography</b>" xData="lineChartXData"
+		yData="lineChartYData" xName="Month Names" yName="<b>Head Count</b>"
+		align="center"></chart>
+</div>
+
+<!--  subtitle="<b> Data</b>"-->
+

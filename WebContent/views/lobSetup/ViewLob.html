@@ -1,0 +1,56 @@
+<h1 align="center">View LOB Data</h1>
+<br> 
+
+<div class="signin">
+	<div style="height: 50px;">
+			<div class="alert alert-danger" ng-hide="bootstrapAlert"
+				align="center">
+				<strong>{{ErrorMessage}}</strong>
+			</div>
+	</div>
+	
+	<form>
+
+				<table class="table">
+				
+					<tr>
+						<th style="font-family: Verdana; color: white; font-size: 16px;"><b>LOB</b></th>
+						<td></td>
+						<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Business_Segment</b></th>
+						<td></td>
+						<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Bundle</b></th>
+						<td></td>
+						<th style="font-family: Verdana; color: white; font-size: 16px;"><b>MSA_Domain_Mapping</b></th>
+						<td></td>
+						<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Currency_Type</b></th>
+						<td></td>
+						<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Delete</b></th>
+					</tr>
+
+					<tr ng-repeat="x in LobData | orderBy:['lob','bus_seg','bundle','msa_mapping','currency_type']">
+						<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.lob}}</td>
+						<td></td>
+						<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.bus_seg}}</td>
+						<td></td>
+						<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.bundle}}</td>
+						<td></td>
+						<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.msa_mapping}}</td>
+						<td></td>
+						<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.currency_type}}</td>
+						<td></td>
+						<td style="font-family: Verdana; color: white; font-size: 16px;"><a href="" type="button" ng-click="deleteLobData(portfolioID)"><i style="color:white;" class="fa fa-trash-o fa-lg" aria-hidden="true"></i></a></td>
+						<td ng-hide="true" ng-init="portfolioID=x.portfolioId">{{x.portfolioId}}</td>
+					</tr>
+							
+				</table>
+	</form>
+</div>
+<div class="signin">
+
+
+		
+		<button class="btnSubmit" type="button" ng-click="createLOB()">Create
+			LOB</button>
+
+
+	</div>

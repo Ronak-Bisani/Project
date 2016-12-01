@@ -1,0 +1,210 @@
+
+<!--Download Accrual Filtered HTML Page For UI-->
+
+<h1 align="center">Download Accrual</h1>
+
+
+<div class="container">
+	<form role="form">
+		<div class="form-group">
+			<div class="col-xs-500">
+
+				<table class="table table-striped table-hover table-condensed table-fixedheader">
+				
+					<tr>
+						<td>LOB</td>
+
+						<td><select ng-model="selectedLob" ng-init="selectedLob"
+							class="form-control list-selector required"
+							ng-options="name for name in lobNames"
+							ng-change="lobSelected(selectedLob)">
+								<option value="">Please Select LOB</option>
+						</select></td>
+
+						<td>SOW NAME</td>
+
+						<td><select ng-model="selectedSow" ng-init="selectedSow"
+							ng-options="name for name in namesEdit"
+							class="form-control list-selector required"
+							ng-change="SowSelected(selectedSow)">
+								<option value="">Please Select SOW NAME</option>
+						</select></td>
+
+						<td>Agile Name</td>
+
+						<td><select ng-model="selectedAgileTeam" ng-init="agileName"
+							ng-options="agilename for agilename in agilenNamesEdit"
+							class="form-control list-selector required"
+							ng-change="agileSelected(agileName)">
+								<option value="">Please Select Agile NAME</option>
+						</select></td>
+
+						<td>WO Number</td>
+
+						<td><select ng-model="selectedWO" ng-init="wonumber"
+							ng-options="wonumber for wonumber in woNumberEdit"
+							class="form-control list-selector required"
+							ng-change="woSelected(wonumber)">
+								<option value="">Please Select WO Number</option>
+						</select></td>
+
+						<td>DM Name</td>
+
+						<td><select ng-model="selectedDm" ng-init="dmName"
+							ng-options="dmName for dmName in dmNameEdit"
+							class="form-control list-selector required"
+							ng-change="dmSelected(wonumber)">
+								<option value="">Please Select DM Name</option>
+						</select></td>
+
+						<td>PM Name</td>
+
+						<td><select ng-model="selectedPm" ng-init="pmName"
+							ng-options="pmName for pmName in pmNameEdit"
+							class="form-control list-selector required"
+							ng-change="pmSelected(agileName)">
+								<option value="">Please Select PM NAME</option>
+						</select></td>
+						
+						<td>Start Month</td>
+
+						<td><select ng-model="selectedPm" ng-init="pmName"
+							ng-options="pmName for pmName in pmNameEdit"
+							class="form-control list-selector required"
+							ng-change="pmSelected(agileName)">
+								<option value="">Please Select Start Month</option>
+						</select></td>
+						
+						<td>End Month</td>
+
+						<td><select ng-model="selectedPm" ng-init="pmName"
+							ng-options="pmName for pmName in pmNameEdit"
+							class="form-control list-selector required"
+							ng-change="pmSelected(agileName)">
+								<option value="">Please Select End Month</option>
+						</select></td>
+						
+					</tr>
+
+
+					<!-- Uncomment in case Go Button is required and update fetch function as required  -->
+					<!-- <tr>
+						<td><button class="btn btn-primary btn-large"
+								ng-click='fetch(selectedLob,selectedSow,selectedAgileTeam)'>GO</button></td>
+
+					</tr>
+ -->
+				</table>
+
+			</div>
+		</div>
+	</form>
+
+
+	<form name="form" role="form1">
+		<div class="form-group">
+			<div class="col-xs-500">
+
+				<!-- <table
+					class="table table-striped table-hover table-condensed table-fixedheader "> -->
+				<table
+					class="table table-striped table-hover table-condensed table-fixedheader table-bordered">
+
+					<thead>
+						<tr>
+
+							<th>LOB</th>
+							<th>SowName</th>
+							<th>Agile_Team</th>
+							<th>Resource_Name</th>
+							<th>Location</th>
+							<th>City</th>
+							<th>Working_Days</th>
+							<th>Leaves</th>
+							<th>Comments</th>
+							<th>Billing_Days</th>
+							<th>Hours</th>
+							<th>Role</th>
+							<th>Currency</th>
+							<th>Rate</th>
+							<th>Amount</th>
+							<th>Month</th>
+							<th>Year</th>
+							<th>PM_Name</th>
+							<th>DM_Name</th>
+							<th>PGM_Name</th>
+							<th>CapOne_ID</th>
+							<th>Wipro_Emp_ID</th>
+							<th>Project_Name</th>
+							<th>DID</th>
+							<th>WO_ID</th>
+							<th>PO_#</th>
+							<th>Project_Type</th>
+							<th>Project_Sub_Type</th>
+							<th>Work_Type</th>
+							<th>Bundle</th>
+							<th>SO/Contract_#</th>
+							<th>SO/Contract_Start_Date</th>
+							<th>SO/Contract_End_Date</th>
+							<th>Approved_Contractual_Spend</th>
+							<th>ART</th>
+
+						</tr>
+					</thead>
+
+					<tbody>
+
+						<tr ng-repeat="x in agileName">
+
+							<td>{{x.lob}}</td>
+							<td>{{x.sowName}}</td>
+							<td>{{x.agileTeam}}</td>
+							<td>{{x.resourceName}}</td>
+							<td>{{x.location_Type}}</td>
+							<td>{{x.location}}</td>
+							<td>{{x.workingDays}}</td>
+							<td>{{x.leaves}}</td>
+							<td>{{x.comments}}</td>
+							<td>{{x.billingDays}}</td>
+							<td>{{x.hours}}</td>
+							<td>{{x.role}}</td>
+							<td>{{x.currency}}</td>
+							<td>{{x.rate}}</td>
+							<td>{{x.amount}}</td>
+							<td>{{x.month}}</td>
+							<td>{{x.year}}</td>
+							<td>{{x.PM_Name}}</td>
+							<td>{{x.DM_name}}</td>
+							<td>{{x.PGM_name}}</td>
+							<td>{{x.Cap_One_Id}}</td>
+							<td>{{x.Wipro_Emp_Id}}</td>
+							<td>{{x.Project_Name}}</td>
+							<td>{{x.DID}}</td>
+							<td>{{x.woid}}</td>
+							<td>{{x.PO_No}}</td>
+							<td>{{x.Project_Type}}</td>
+							<td>{{x.Project_Sub_Type}}</td>
+							<td>{{x.work_Type}}</td>
+							<td>{{x.Bundle}}</td>
+							<td>{{x.SO_No}}</td>
+							<td>{{x.So_Start_Date}}</td>
+							<td>{{x.So_End_Date}}</td>
+							<td>{{x.ApprovedContractualSpend}}</td>
+							<td>{{x.ART}}</td>
+
+						</tr>
+					</tbody>
+
+				</table>
+
+				<button class="btn btn-primary pull-left btn-large">Reset</button>
+				<button class="btn btn-primary pull-left btn-large" ng-disabled="disabled"
+					ng-click='exportData()'>Download</button>
+
+			</div>
+		</div>
+	</form>
+</div>
+
+
+	

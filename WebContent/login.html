@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html >
+  
+<head>
+    
+<meta charset="UTF-8">
+    
+<title>Login Page</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>    
+    
+
+ <link href="css/login.css" rel="stylesheet" type="text/css">
+  
+</head>
+
+  
+<body>
+
+    
+<div class="vid-container">
+  
+<video id="Video1" class="bgvid back" autoplay="false" muted="muted" preload="auto">
+      
+
+ <source src="http://shortcodelic1.manuelmasiacsasi.netdna-cdn.com/themes/geode/wp-content/uploads/2014/04/milky-way-river-1280hd.mp4.mp4" type="video/mp4">
+
+<!-- <source src="https://www.youtube.com/watch?v=RLR07oM_SBQ" type="video/mp4"> -->
+  
+</video>
+  
+
+    
+
+   
+ <form action="Index.html" method="get">
+ <div class="signin">
+  <p style="font-family:Verdana; color:white;" id = "lblerror" value="Hello"></p> 
+  <h1>&nbsp;</h1>
+
+      
+<input class = "user" type="text" placeholder="Enter Username" id="userkey" autofocus>
+    
+  <input class = "pass" type="password" placeholder="Enter Password" id="pswd" onKeyUp="return clear()">
+   
+   <button class="btnSubmit" type="button" onclick="loginFunction()">LOGIN</button>
+    
+  <h2 align="center" style="font:Verdana; color:white;"><b>Forgot Password? </b></h2>
+    </div>
+  </form>
+
+
+</div>
+   
+
+       
+<script>
+//Easy way to wait for all videos to load before start playing
+
+var promises = [];
+function makePromise(i, video) {
+  promises[i] = new $.Deferred();
+  // This event tells us video can be played all the way through, without stopping or buffering
+  video.oncanplaythrough = function() {
+    // Resolve the promise
+    promises[i].resolve();
+  }
+}
+// Pause all videos and create the promise array
+$('video').each(function(index){
+  this.pause();
+  makePromise(index, this);
+})
+
+// Wait for all promises to resolve then start playing
+$.when.apply(null, promises).done(function () {
+  $('video').each(function(){
+    this.play();
+  });
+});
+/* function clear()
+{
+	document.getElementById("lblerror").innerHTML = '';
+	
+	} */
+	$( ".userkey" ).change(function() {
+		document.getElementById("lblerror").innerHTML = '';
+		  alert( "Handler for .change() called." );
+		});
+function loginFunction() {
+	
+    var UserId = document.getElementById("userkey").value;
+    var password = btoa(document.getElementById("pswd").value);
+    var flag = 0;
+        $.ajax(
+        {
+            dataType: 'json',
+            headers: {
+                Accept:"application/json",
+                "Access-Control-Allow-Origin": "*"
+            },
+            type:'GET',
+            url:"http://localhost:8086/com.wipro.capitalone.services/rest/authenticationservice/authenticateuser?User_Id=" + UserId + "&pswd=" + password,
+            		success: function(data)
+            {
+            		if(data.records[0] == undefined)
+            		{
+            			//alert("Username or Password is incorrect");
+            			document.getElementById("lblerror").innerHTML = 'Username or Password is incorrect';
+            			document.getElementById("pswd").value = '';
+            			return;
+            		}else{
+
+            		if(data.records[0].UserRole == "DM")
+            		{
+            			location.href = "/OperationSystems_UI/Index.html#/createSow?login="+UserId;
+            		}
+            		else if(data.records[0].UserRole == "PM")
+            		{
+            			location.href = "/OperationSystems_UI/Index.html#/createSow?login="+UserId;
+            		}
+            		else if(data.records[0].UserRole == "LOB PMO")
+            		{
+            			location.href = "/OperationSystems_UI/Index.html#/lobSetup?login="+UserId;
+            		}
+            		else if(data.records[0].UserRole == "BFM")
+            		{
+            			location.href = "/OperationSystems_UI/Index.html#/rate?login="+UserId;
+            		}
+            		else if(data.records[0].UserRole == "ADMIN")
+            		{
+            			location.href = "/OperationSystems_UI/Index.html#/bfmActivity?login="+UserId;
+            		}
+            		else if(data.records[0].UserRole == "General Operations")
+            		{
+            			location.href = "/OperationSystems_UI/Index.html#/viewlocationOfoperation?login="+UserId;
+
+            		}
+            		else if(data.records[0].UserRole == "Finance Operations")
+            		{
+            			location.href = "/OperationSystems_UI/Index.html#/Workingdays?login="+UserId;
+            		}
+            		else{
+            			alert("Invalid User Role");
+            			}
+            		}
+            		
+            },
+            error: function(data)
+            {
+                alert("UserID or Password is incorrect");
+                return;
+            }
+        });
+   
+}
+
+</script>
+
+    
+    
+ 
+ </body>
+
+</html>

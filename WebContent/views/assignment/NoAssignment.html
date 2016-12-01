@@ -1,0 +1,63 @@
+<h1 align="center"><b>Assignment Report</b></h1>
+
+<div class="signin" ng-controller="NoAssCtrl">
+	
+	<div style="height: 50px;">
+		<div class="alert alert-danger" ng-hide="bootstrapAlert"
+			align="center">
+			<strong>{{ErrorMessage}}</strong>
+		</div>
+	</div>
+	
+	<form>
+						<table class="table">
+
+							<tr>
+								<td style="font-family: Verdana; color: white; font-size: 16px;"><b>LOB</b></td>
+								<td><select id="selectLob" ng-model="selectedLob"
+									ng-init="selectedLOB" ng-options="lob for lob in lobnamesedit"
+									class="form1-control1"
+									ng-change="lobSelected(selectedLob)">
+										<option value="">Please Select LOB</option>
+								</select></td>
+								
+								<td style="font-family: Verdana; color: white; font-size: 16px;"><b>SOW NAME</b></td>
+								<td><select id="selectSowname" ng-model="selectedSowname"
+									ng-init="selectedSowname"
+									ng-options="sowname for sowname in namesEdit"
+									class="form1-control1"
+									ng-change="SowSelected(selectedSowname)">
+										<option value="">SowName</option>
+								</select>
+						</table>
+
+
+
+						<table class="table">
+							<tr>
+								<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Resource Name</b></th>
+								<td></td>
+
+								<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Available From</b></th>
+								<td></td>
+								
+								<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Available Till</b></th>
+							</tr>
+
+
+
+
+							<tr ng-repeat="x in resourceNotAssign">
+
+								<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.ResourceName}}</td>
+								<td></td>
+								<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.startDate}}</td>
+								<td></td>
+								<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.endDate}}</td>
+								<td></td>
+
+							</tr>
+
+						</table>
+			</form>
+</div>

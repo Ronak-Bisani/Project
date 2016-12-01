@@ -1,0 +1,208 @@
+<h1 align="center">Review/Approve Actual</h1>
+
+<div class="signin1" ng-controller="reviewActual">
+
+	<div style="height: 50px;">
+		<div class="alert alert-danger" ng-hide="bootstrapAlert"
+			align="center">
+			<strong>{{ErrorMessage}}</strong>
+		</div>
+	</div>
+	
+	<form>
+	
+		<table class="table">
+			<tr>
+				<td style="font-family: Verdana; color: white; font-size: 16px;"><b>Agile Name</b></td>
+				<td>
+					<select ng-model="selectedAgileTeam" ng-init="agileName"
+							ng-options="agilename for agilename in agilenNamesEdit"
+							class="form1-control1">
+							<option value="">Please Select Agile Team</option>
+					</select>
+				</td>
+				<td>
+					<button class="btn btn-primary" ng-click='agileSelected(selectedAgileTeam)'>GO</button>
+				</td>
+			</tr>
+		</table>
+
+		<div ng-show="!show">
+			<table class="table">
+				<tr>
+					<td style="font-family: Verdana; color: white; font-size: 16px;"><b>SOW Name</b></td>
+					<td>
+						<select ng-model="selectedSOWName" ng-init="sowName"
+								ng-options="sowName for sowName in sowNamesEdit"
+								class="form1-control1">
+								<option value="">Please Select SOW Name</option>
+						</select>
+					</td>
+					<td>
+						<button class="btn btn-primary" ng-click='sowSelected(selectedSOWName)'>GO</button>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</form>
+	
+	<form>
+		<table class="table">
+			<tr>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Resource Name</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>CapOne ID</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Location</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>City</b></th>
+				<td></td>
+				<td></td>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Working Days</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Leaves</b></th>
+				<td></td>
+				<td></td>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>&nbsp;&nbsp;Comments&nbsp;&nbsp;</b></th>
+				<td></td>
+				<td></td>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Billing Days</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Hours</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Role</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Currency</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Rate</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Amount</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Month</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Year</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>PM Name</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>DM Name</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>PGM Name</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Wipro Emp ID</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Project Name</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>DID</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>WO ID</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>PO #</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Project Type</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Project Sub Type</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Work Type</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Bundle</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>SO/Contract #</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>SO/Contract Start Date</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>SO/Contract End Date</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>Approved Contractual Spend</b></th>
+				<td></td>
+				<th style="font-family: Verdana; color: white; font-size: 16px;"><b>ART</b></th>
+			</tr>
+
+			<tr ng-repeat="x in agileName">
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.resourceName}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.Cap_One_Id}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.location_Type}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.location}}</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.workingDays}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.leaves}}</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.comments}}</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.billingDays}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.hours}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.role}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.currency}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.rate}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.amount}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.month}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.year}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.PM_Name}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.DM_name}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.PGM_name}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.Wipro_Emp_Id}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.Project_Name}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.DID}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.woid}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.PO_No}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.Project_Type}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.Project_Sub_Type}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.work_Type}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.Bundle}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.SO_No}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.So_Start_Date}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.So_End_Date}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.ApprovedContractualSpend}}</td>
+				<td></td>
+				<td style="font-family: Verdana; color: white; font-size: 16px;">{{x.ART}}</td>
+			</tr>
+		</table>
+	</form>
+	
+	<button type="button" class="btn btn-primary btn-color btn-bg-color btn-sm col-xs-2 margin-left" ng-show="!show" ng-click="approveDM(selectedSOWName,'Review')" ng-disabled = "disablebutton">
+    	  <span class="glyphicon glyphicon-pencil" aria-hidden="true" ng-show="!show"></span> Review
+    </button>
+    
+    <button type="button" class="btn btn-primary btn-color btn-bg-color btn-sm col-xs-2 margin-left" ng-show="show" ng-click='approve(selectedAgileTeam)' ng-disabled = "disablebutton">
+      	<span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Approve
+    </button>
+    
+    <button type="button" class="btn btn-primary btn-color btn-bg-color btn-sm col-xs-2 margin-left" ng-show="!show" ng-click="approveDM(selectedSOWName,'Approve')" ng-disabled = "disablebutton">
+      	<span class="glyphicon glyphicon-ok" aria-hidden="true" ng-show="!show"></span> Approve
+    </button>
+</div>

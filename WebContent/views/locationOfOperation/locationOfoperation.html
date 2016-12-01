@@ -1,0 +1,86 @@
+<!-- ADD % of UPlift in this screen -->
+<html>
+<head> 
+
+<meta charset="utf-8">
+
+<link href="css/center.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+<h1 align="center">Location Of Operation</h1>
+
+<div class="container" ng-controller="locationCtrl">
+<div style="height: 50px;">
+			<div class="alert alert-danger" ng-hide="bootstrapAlert"
+				align="center">
+				<strong>{{ErrorMessage}}</strong>
+			</div>
+		</div>
+<div class="center">
+	<form role="form">
+		<div class="form-group" align="center">
+			<div class="col-xs-8" align="center">
+
+				<table class="table table-striped table-hover table-condensed">
+				
+					<tr>
+						<th width="15%">
+							<div align="center">Enter Country</div>
+						</th>
+						<th width="15%">
+							<div align="center">Enter City</div>
+						</th>
+						<th>
+							<div align="center">% Of Rate Uplift</div>
+						</th>
+
+					</tr>
+
+					<tr>
+						<td width="40%">
+							<div class="form-group" data-ng-repeat="choice in choices">
+								<input type="text" ng-model="choice.country" name=""
+									placeholder="GEO Country" class="form-control" required ng-change="clrDesc()">  
+								<button  class="btn btn-primary" ng-show="showAddChoice(choice)"
+									ng-click="addNewChoice()" >+</button>
+									
+						<button class="btn btn-danger" ng-show="showAddChoice(choice)"
+										ng-click="removeChoice()" data-toggle="popover"
+										data-trigger="hover" data-content="Delete feild"
+										ng-disabled="disable_remove">-</button>			
+							</div>
+						</td>
+
+
+						<td width="30%">
+							<div class="form-group" data-ng-repeat="choice in choices">
+								<input type="text" ng-model="choice.city" name=""
+									placeholder="City Name" class="form-control" required ng-change="clrDesc()">
+							</div>
+						</td>
+
+						
+                        <td width="30%">
+							<div class="form-group" data-ng-repeat="choice in choices">
+								<input type="number" ng-model="choice.rateUplift" ng-init="choice.rateUplift=0.0" 
+									placeholder="0.0" class="form-control" required ng-change="clrDesc()">
+									
+							</div>
+						</td>
+
+					</tr>
+
+				</table>
+
+				<button margin="20px" class="btn btn-primary pull-right"
+					style="padding: 10px 10px;" ng-click='addGeoLocations()'>SAVE</button>
+
+			</div>
+		</div>
+	</form>
+</div>
+</div>
+</body>
+</html>

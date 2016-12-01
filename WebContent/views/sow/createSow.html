@@ -1,0 +1,187 @@
+
+
+<link href="css/center.css" rel="stylesheet" type="text/css">
+
+
+<body>
+	<h1>CREATE SOW</h1>
+
+	<div class="signin" ng-controller="lobCtrl" align="center">
+
+		<div style="height: 50px;">
+			<div class="alert alert-danger" ng-hide="bootstrapAlert"
+				align="center">
+				<strong>{{ErrorMessage}}</strong>
+			</div>
+		</div>
+		<form>
+			<table class="table">
+				<tr>
+					<td style="font-family: Verdana; color: white; font-size: 16px;"><b>SOW
+							ID</b></td>
+					<td><input type="text" placeholder="SOW Id" ng-model="sowId"
+						class="user" required ng-change="clrDesc()"></td>
+					<td style="font-family: Verdana; color: white; font-size: 16px;"><b>LOB</b></td>
+
+					<td><select id="selectLob" ng-model="selectedLob"
+						ng-init="selectedLob" class="form1-control1"
+						ng-options="name for name in names" required ng-change="clrDesc()">
+							<option value="">Please Select LOB</option>
+					</select></td>
+ 
+				</tr>
+
+				<tr>
+					<td style="font-family: Verdana; color: white; font-size: 16px;"><b>SOW
+							Name</b></td>
+
+					<td><input type="text" placeholder="SOW Name"
+						ng-model="sowName" id="Sow/Name" class="user" required
+						ng-change="clrDesc()"></td>
+					<td style="font-family: Verdana; color: white; font-size: 16px;"><b>SOW
+							Amendment</b></td>
+
+					<td><input type="text" placeholder="SOW/Amendment"
+						ng-model="sowadmnt" size="25" id="SOW/Amendment" class="user"
+						required ng-change="clrDesc()"></td>
+				</tr>
+
+				<tr>
+
+					<td style="font-family: Verdana; color: white; font-size: 16px;"><b>Start
+							Date</b></td>
+
+
+					<td><div datepicker datepicker-class="test-custom-class"
+							date-typer="true" date-format="MM-dd-yyyy">
+
+							<input type="text" ng-model="startDate" placeholder="StartDate"
+								class="angular-datepicker-input user" required
+								ng-change="clrDesc()" />
+						</div></td>
+
+					<td style="font-family: Verdana; color: white; font-size: 16px;"><b>End
+							Date</b></td>
+
+					<td><div datepicker datepicker-class="" date-typer="true"
+							date-format="MM-dd-yyyy">
+							<input ng-model="endDate" type="text" placeholder="EndDate"
+								class="angular-datepicker-input user" required
+								ng-change="clrDesc()" />
+						</div></td>
+				</tr>
+
+				<tr>
+					<td style="font-family: Verdana; color: white; font-size: 16px;"><b>Approved
+							Contarctual Spend</b></td>
+
+					<td><input type="number"
+						placeholder="Approved Contarctual Spend" ng-model="appContSpnd"
+						size="25" class="user" required ng-change="clrDesc()"></td>
+					<!-- <td>DID</td>
+						<td><input type="text" placeholder="DID" ng-model="did"
+							size="25" id="DID" class="form-control" required></td> -->
+					<td style="font-family: Verdana; color: white; font-size: 16px;"><b>Project
+							Name</b></td>
+
+					<td><input type="text" placeholder="Project Name"
+						ng-model="pname" size="25" id="pname" class="user" required
+						ng-change="clrDesc()"></td>
+				</tr>
+				<tr>
+					<td style="font-family: Verdana; color: white; font-size: 16px;"><b>PGM</b></td>
+
+					<td><input type="text" placeholder="PGM" ng-model="pgm"
+						size="25" id="PGM" class="user" required ng-change="clrDesc()"></td>
+					<td style="font-family: Verdana; color: white; font-size: 16px;"><b>DM
+							Name</b></td>
+
+					<td><input type="text" placeholder="DM Name" ng-model="dm"
+						size="25" id="DM" class="user" required ng-change="clrDesc()"></td>
+				</tr>
+			</table>
+			<table class="table">
+				<tr>
+					<th style="font-family: Verdana; color: white; font-size: 18px;"><b>DID</b></th>
+					<th style="font-family: Verdana; color: white; font-size: 18px;"><b>WOID</b></th>
+					<th style="font-family: Verdana; color: white; font-size: 18px;"><b>Budget</b></th>
+					<th style="font-family: Verdana; color: white; font-size: 18px;"><b>Purchase
+							Order</b></th>
+					<th style="font-family: Verdana; color: white; font-size: 18px;"><b>CapitalOne
+							Engagement Manager</b></th>
+				</tr>
+				<tr>
+					<td>
+						<div class="form-group" data-ng-repeat="choice in choices">
+							<label for="choice" ng-show="showChoiceLabel(choice)">DID</label>
+							<input type="text" ng-model="choice.did" name=""
+								placeholder="DID" class="user" required ng-change="clrDesc()"><br>
+
+							<button class="btn btn-primary" ng-show="showAddChoice(choice)"
+								ng-click="addNewChoice()">+</button>
+
+							<button class="btn btn-danger" ng-show="showAddChoice(choice)"
+								ng-click="removeChoice()" data-toggle="popover"
+								data-trigger="hover" data-content="Delete feild"
+								ng-disabled="disable_remove">-</button>
+						</div>
+					</td>
+
+
+					<td>
+						<div class="form-group" data-ng-repeat="choice in choices">
+							<label for="choice" ng-show="showChoiceLabel(choice)">WOID</label>
+							<input type="text" ng-model="choice.woid" name=""
+								placeholder="WOID" class="user" required ng-change="clrDesc()">
+						</div>
+					</td>
+
+					<td>
+						<div class="form-group" data-ng-repeat="choice in choices">
+							<label for="choice" ng-show="showChoiceLabel(choice)">Budget</label>
+							<input type="number" ng-model="choice.budget" name=""
+								placeholder="Budget" class="user" required ng-change="clrDesc()">
+						</div>
+					</td>
+
+					<td>
+						<div class="form-group" data-ng-repeat="choice in choices">
+							<label for="choice" ng-show="showChoiceLabel(choice)">PO</label>
+							<input type="text" ng-model="choice.po" name=""
+								placeholder="Purchase order" class="user" required
+								ng-change="clrDesc()">
+						</div>
+					</td>
+
+					<td>
+						<div class="form-group" data-ng-repeat="choice in choices">
+							<label for="choice" ng-show="showChoiceLabel(choice)">CapOne
+								Egmnt Manager</label> <input type="text" ng-model="choice.caponeManager"
+								name="" placeholder="CapOne Engagement Manager" class="user"
+								required ng-change="clrDesc()">
+						</div>
+					</td>
+
+
+				</tr>
+				<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				
+				<td></td>
+					<td><button class="btn btn-primary" ng-disabled="disabled"
+							ng-click='saveSow(sowId,selectedLob,sowName,sowadmnt,startDate,endDate,appContSpnd,pgm,dm,pname)'>Save</button></td>
+				</tr>
+			</table>
+		</form>
+
+
+
+
+	</div>
+
+
+</body>
+</html>

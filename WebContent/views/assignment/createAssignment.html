@@ -1,0 +1,123 @@
+<h1 align="center">Assignment Plan</h1>
+
+<div class="signin" ng-controller="createAssignmentCtrl">
+
+	<div style="height:50px;">
+		<div class="alert alert-danger" ng-hide="bootstrapAlert" align="center">
+  			<strong>{{ErrorMessage}}</strong> 
+		</div>
+	</div>
+	
+
+	<form>
+		<table class="table">
+					<tr>
+						<td style="font-family: Verdana; color: white; font-size: 16px;"><b>LOB</b></td>
+
+						<td><select ng-model="selectedLob" ng-init="selectedLob"
+							class="form1-control1"
+							ng-options="name for name in names"
+							ng-change="lobSelected(selectedLob)">
+								<option value="">Please Select LOB</option>
+						</select></td>
+
+						<td style="font-family: Verdana; color: white; font-size: 16px;"><b>SOW NAME</b></td>
+
+						<td><select ng-model="assignment.selectedSow"
+							ng-init="selectedSow" ng-options="name for name in namesEdit"
+							class="form1-control1"
+							ng-change="AssignSowSelected(assignment.selectedSow)">
+								<option value="">Please Select SOW NAME</option>
+						</select></td>
+					</tr>
+
+					<tr>
+						<td style="font-family: Verdana; color: white; font-size: 16px;"><b>Agile Name</b></td>
+
+						<td><select ng-model="agileName" ng-init="agileName"
+							ng-options="agilename for agilename in agilenNamesEdit"
+							class="form1-control1" ng-change="clrDesc()">
+								<option value="">Please Select Agile NAME</option>
+						</select></td>
+						<td style="font-family: Verdana; color: white; font-size: 16px;"><b>Resource Name</b></td>
+						<td><select ng-model="resourceName" ng-init="resourceName"
+							ng-options="resource for resource in resourceNames"
+							class="form1-control1" ng-change="getCaponeEid(resourceName)">
+								<option value="">Please Select Resource NAME</option>
+						</select></td>
+
+
+					</tr>
+
+					<tr>
+
+								<td style="font-family: Verdana; color: white; font-size: 16px;"><b>Start Date</b></td>
+								<td><div datepicker datepicker-class="test-custom-class"
+										date-typer="true" date-format="MM-dd-yyyy">
+										<input ng-model="startDate" type="text"
+											placeholder="StartDate"
+											class="angular-datepicker-input user" required ng-change="clrDesc()"/>
+									</div></td>
+
+
+								<td style="font-family: Verdana; color: white; font-size: 16px;"><b>End Date</b></td>
+								<td><div datepicker datepicker-class="test-custom-class"
+										date-typer="true" date-format="MM-dd-yyyy">
+										<input ng-model="endDate" type="text" placeholder="EndDate"
+											class="angular-datepicker-input user" required ng-change="clrDesc()"/>
+									</div></td>
+							</tr>
+					
+					
+					
+					
+					<tr>
+					<td style="font-family: Verdana; color: white; font-size: 16px;"><b>CapitalOne ID</b></td>
+					<td><input type="text" placeholder="CapitalOne ID" ng-model="capitalOneID"
+							size="25" class="form1-control1" required ng-change="clrDesc()"></td>
+					<td style="font-family: Verdana; color: white; font-size: 16px;"><b>Percentage %</b></td>
+					<td><input type="number" min="1" max="100" placeholder="Percentage %" ng-model="percentage"
+							size="25" class="user" required ng-change="clrDesc()"></td>
+					</tr>
+
+					<tr>
+						<td style="font-family: Verdana; color: white; font-size: 16px;"><b>Role</b></td>
+						<td><select ng-model="allRoles" ng-init="allRoles"
+							ng-options="role for role in roles"
+							class="form1-control1" ng-change="clrDesc()">
+								<option value="">Please Select Role</option>
+						</select></td>
+						<td style="font-family: Verdana; color: white; font-size: 16px;"><b>Country</b></td>
+						<td><select ng-model="getCountry" ng-init="getCountry"
+							class="form1-control1"
+							ng-options="name for name in countrynames"
+							ng-change="countrySelected(getCountry)">
+								<option value="">Please Select Country</option>
+						</select></td>
+					</tr>
+					<tr>
+						<td style="font-family: Verdana; color: white; font-size: 16px;"><b>City</b></td>
+						<td><select ng-model="getCity" ng-init="getCity"
+							class="form1-control1"
+							ng-options="name for name in cities"
+							ng-change="citySelected(allRoles,getCountry,getCity)">
+								<option value="">Please Select City</option>
+						</select></td>
+						<td style="font-family: Verdana; color: white; font-size: 16px;"><b>Rate</b></td>
+						<td><input type="text" placeholder="Rate" ng-model="rate"
+							size="25" class="user" required readonly required ng-change="clrDesc()"></td>
+
+					</tr>
+					<tr>
+				<td></td>
+				
+				<td></td>
+				
+				
+				<td></td>
+					<td><button class="btn btn-primary pull-right"  ng-disabled="disabled"
+					ng-click='saveAssignment(selectedLob,assignment.selectedSow,resourceName,agileName,startDate,endDate,capitalOneID,percentage,allRoles,getCountry,getCity,rate)'>Save</button></td>
+				</tr>
+				</table> 
+	</form>
+</div>
